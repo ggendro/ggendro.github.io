@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    {% assign page_name = page.name | split: "." | first %}
+    {% if page_name == "index" %}
+        {% assign page_key = "home" %}
+    {% else %}
+        {% assign page_key = page_name %}
+    {% endif %}
+    
+    {% if page.title %}
+        <title>{{ page.title }}</title>
+    {% elsif site.data.titles[page_key] %}
+        {% assign title_format = site.data.titles.format %}
+        {% assign formatted_title = title_format | replace: "%title%", site.data.titles[page_key] | replace: "%name%", site.data.profile.name %}
+        <title>{{ formatted_title }}</title>
+    {% else %}
+        <title>{{ site.data.profile.name }}</title>
+    {% endif %}
+    
+    <!-- Prevent flash of unstyled content when in dark mode -->
+    <script>
+        // Immediately set the theme before any content renders
+        (function() {
+            const currentTheme = localStorage.getItem('theme');
+            let isDark = false;
+            
+            if (currentTheme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                isDark = true;
+            } else if (currentTheme === 'light') {
+                document.documentElement.setAttribute('data-theme', 'light');
+            } else {
+                // Check system preference if no saved preference
+                if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    document.documentElement.setAttribute('data-theme', 'dark');
+                    isDark = true;
+                }
+            }
+            
+            // Make the theme mode available globally
+            window.isDarkTheme = isDark;
+            
+            // Define a function that will be called as soon as the DOM begins to load
+            window.showCorrectThemeIcon = function() {
+                const lightIcon = document.getElementById('theme-toggle-light');
+                const darkIcon = document.getElementById('theme-toggle-dark');
+                
+                if (!lightIcon || !darkIcon) return;
+                
+                if (isDark) {
+                    darkIcon.style.display = 'inline-block';
+                } else {
+                    lightIcon.style.display = 'inline-block';
+                }
+            };
+            
+            // Try to run it immediately in case elements are already available
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', window.showCorrectThemeIcon);
+            } else {
+                window.showCorrectThemeIcon();
+            }
+        })();
+    </script>
+    
+    <link rel="stylesheet" type="text/css" href="{{ '/style.css' | relative_url }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Dark mode toggle functionality
+            const toggleButton = document.querySelector('#theme-toggle');
+            const lightIcon = document.querySelector('#theme-toggle-light');
+            const darkIcon = document.querySelector('#theme-toggle-dark');
+        
+            // Function to set the theme
+            function setTheme(theme) {
+                document.documentElement.setAttribute('data-theme', theme);
+                localStorage.setItem('theme', theme);
+                
+                // Update the icons
+                if (theme === 'dark') {
+                    lightIcon.style.display = 'none';
+                    darkIcon.style.display = 'inline-block';
+                } else {
+                    lightIcon.style.display = 'inline-block';
+                    darkIcon.style.display = 'none';
+                }
+            }
+        
+            // Make sure the correct icon is showing
+            window.showCorrectThemeIcon();
+        
+            // Handle button click
+            toggleButton.addEventListener('click', function() {
+                const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+                setTheme(theme);
+            });
+            
+            // Listen for system theme changes
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+                // Only apply if the user hasn't explicitly chosen a theme
+                if (!localStorage.getItem('theme')) {
+                    setTheme(e.matches ? 'dark' : 'light');
+                }
+            });
+
+            // Set active class for current page
+            const currentPath = window.location.pathname;
+            const navLinks = document.querySelectorAll('.menu-items a');
+            
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === currentPath || 
+                    (currentPath === '/' && link.getAttribute('href') === '/index.html')) {
+                    link.classList.add('active');
+                }
+            });
+            
+            // Mobile menu toggle functionality
+            const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+            const menuItems = document.querySelector('.menu-items');
+            
+            if (mobileMenuToggle) {
+                mobileMenuToggle.addEventListener('click', function() {
+                    menuItems.classList.toggle('expanded');
+                    
+                    // Change icon based on menu state
+                    const menuIcon = mobileMenuToggle.querySelector('i');
+                    if (menuItems.classList.contains('expanded')) {
+                        menuIcon.classList.replace('fa-bars', 'fa-times');
+                    } else {
+                        menuIcon.classList.replace('fa-times', 'fa-bars');
+                    }
+                });
+                
+                // Initialize with closed menu
+                const menuIcon = mobileMenuToggle.querySelector('i');
+                if (menuIcon.classList.contains('fa-times')) {
+                    menuIcon.classList.replace('fa-times', 'fa-bars');
+                }
+                
+                // Close menu when clicking anywhere else on the page
+                document.addEventListener('click', function(event) {
+                    if (!menuItems.contains(event.target) && !mobileMenuToggle.contains(event.target)) {
+                        if (menuItems.classList.contains('expanded')) {
+                            menuItems.classList.remove('expanded');
+                            mobileMenuToggle.querySelector('i').classList.replace('fa-times', 'fa-bars');
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+</head>
+<body>
+    {% include header.html %}
+    
+    {{ content }}
+    
+    {% include footer.html %}
+</body>
+</html>

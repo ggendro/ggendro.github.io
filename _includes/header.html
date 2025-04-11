@@ -1,0 +1,46 @@
+<nav class="top-menu">
+    <div class="nav-container">
+        <div class="logo">
+            <a href="{{ '/' | relative_url }}">{{ site.data.profile.name }}</a>
+        </div>
+        <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
+            <i class="fas fa-bars"></i>
+        </button>
+        <ul class="menu-items">
+            <!-- Always show Home menu item -->
+            <li><a href="/index.html">Home</a></li>
+            
+            <!-- Only show Projects menu item if there are projects -->
+            {% assign project_count = site.projects | size %}
+            {% if project_count > 0 %}
+            <li><a href="/projects.html">Research</a></li>
+            {% endif %}
+            
+            <!-- Only show Blog menu item if there are blog posts -->
+            {% assign post_count = site.posts | size %}
+            {% if post_count > 0 %}
+            <li><a href="/blog.html">Blog</a></li>
+            {% endif %}
+            
+            <!-- Always show About menu item -->
+            <li><a href="/about.html">About</a></li>
+            
+            <li><a href="{{ site.data.profile.cv.path | relative_url }}" target="_blank">{{ site.data.profile.cv.label }}</a></li>
+            <li class="social-icons">
+                {% for social in site.data.profile.social %}
+                {% assign key = social[0] %}
+                {% assign value = social[1] %}
+                <a href="{{ value.url }}" target="_blank" aria-label="{{ value.label }}">
+                    <i class="{{ value.icon }}"></i>
+                </a>
+                {% endfor %}
+            </li>
+            <li class="theme-toggle-wrapper">
+                <button id="theme-toggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-sun" id="theme-toggle-light" style="display: none;"></i>
+                    <i class="fas fa-moon" id="theme-toggle-dark" style="display: none;"></i>
+                </button>
+            </li>
+        </ul>
+    </div>
+</nav>

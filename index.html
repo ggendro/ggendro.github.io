@@ -1,0 +1,129 @@
+---
+layout: default
+---
+
+<header>
+    <h1>{{ site.data.profile.name }}</h1>
+    <p class="title">{{ site.data.profile.title }}</p>
+    <div class="subtitle-container">
+        <p class="subtitle">{{ site.data.profile.subtitle }}</p>
+    </div>
+</header>
+
+<main class="with-bg-pattern">
+    <section class="profile-intro-section">
+        <div class="profile-image">
+            <img src="{{ site.data.profile.profile_photo }}" alt="Profile">
+        </div>
+        <div class="intro">
+            <p>{{ site.data.profile.short_bio | markdownify }}</p>
+        </div>
+    </section>
+    
+    {% assign featured_projects = site.projects | where: "featured", true | sort: 'date' | reverse %}
+    {% assign project_count = featured_projects | size %}
+    {% if project_count > 0 %}
+    <section class="projects">
+        <h2>Latest Research</h2>
+        <div class="project-cards">
+            {% for project in featured_projects limit:5 %}
+                <div class="project-card">
+                    {% if project.thumbnail %}
+                    <div class="project-image">
+                        <img src="{{ project.thumbnail }}" alt="{{ project.title }}">
+                    </div>
+                    {% endif %}
+                    <div class="project-content">
+                        <h3><a href="{{ project.url | relative_url }}" class="site-link">{{ project.title }}</a></h3>
+                        
+                        {% if project.authors %}
+                        <div class="project-authors">
+                            <i class="fas fa-users"></i> 
+                            <span>
+                            {% for author in project.authors %}
+                                {% if author == site.data.profile.name %}
+                                    <span class="author-highlight">{{ author }}</span>{% unless forloop.last %}, {% endunless %}
+                                {% else %}
+                                    {{ author }}{% unless forloop.last %}, {% endunless %}
+                                {% endif %}
+                            {% endfor %}
+                            </span>
+                        </div>
+                        {% endif %}
+                        
+                        <p>{{ project.excerpt | strip_html | truncatewords: 45 }}</p>
+                        
+                        <div class="project-tech">
+                            {% for tech in project.technologies %}
+                            <span class="tech-tag">{{ tech }}</span>
+                            {% endfor %}
+                        </div>
+                        
+                        <div class="project-buttons">
+                            <a href="{{ project.url | relative_url }}" class="project-button details-button">
+                                <i class="fas fa-info-circle"></i> Read More
+                            </a>
+                            
+                            {% if project.github_link %}
+                            <a href="{{ project.github_link }}" class="project-button github-button" target="_blank" rel="noopener noreferrer">
+                                <i class="fab fa-github"></i> Code
+                            </a>
+                            {% endif %}
+                            
+                            {% if project.paper_link %}
+                            <a href="{{ project.paper_link }}" class="project-button paper-button" target="_blank" rel="noopener noreferrer">
+                                <i class="fas fa-file-alt"></i> Paper
+                            </a>
+                            {% endif %}
+                            
+                            {% if project.paper_links %}
+                            {% for paper in project.paper_links %}
+                            <a href="{{ paper.url }}" class="project-button paper-button" target="_blank" rel="noopener noreferrer">
+                                <i class="fas fa-file-alt"></i> {{ paper.name | capitalize }}
+                            </a>
+                            {% endfor %}
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        
+        {% assign all_projects = site.projects | size %}
+        {% if all_projects > 3 %}
+        <div class="view-all">
+            <a href="/projects.html" class="view-all-button">View All Projects</a>
+        </div>
+        {% endif %}
+    </section>
+    {% endif %}
+    
+    {% assign post_count = site.posts | size %}
+    {% if post_count > 0 %}
+    <section class="blog">
+        <h2>Latest Blog Posts</h2>
+        <div class="blog-posts">
+            {% for post in site.posts limit:2 %}
+            <div class="blog-post">
+                <h3><a href="{{ post.url }}" class="site-link">{{ post.title }}</a></h3>
+                <p>{{ post.excerpt | strip_html | truncatewords: 20 }}</p>
+            </div>
+            {% endfor %}
+        </div>
+        
+        {% if post_count > 2 %}
+        <div class="view-all">
+            <a href="/blog.html" class="view-all-button">View All Posts</a>
+        </div>
+        {% endif %}
+    </section>
+    {% endif %}
+    
+    <!-- Background Image Section -->
+    <section class="background-image-section">
+        <figure class="about-featured-image">
+            <img src="{{ site.data.profile.background_photo }}" alt="{{ site.data.profile.background_photo_caption }}">
+            <figcaption>{{ site.data.profile.background_photo_caption }}</figcaption>
+        </figure>
+    </section>
+</main>

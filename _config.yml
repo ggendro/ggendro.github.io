@@ -1,0 +1,51 @@
+title: Gaël Gendron
+description: Personal website and portfolio
+url: "https://ggendro.github.io"
+baseurl: ""
+
+# Build settings
+markdown: kramdown
+theme: minima
+plugins:
+  - jekyll-feed
+kramdown:  
+  parse_block_html: true
+
+# Collections
+collections:
+  projects:
+    output: true
+    sort_by: date
+    permalink: /projects/:path/
+
+# Default front matter
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+  - scope:
+      path: ""
+      type: "projects"
+    values:
+      layout: "project"
+  
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - README.md
+  - .sass-cache
+  - .jekyll-cache
+  - .jekyll-metadata
+  - .git
+  - .gitignore
+  - .bundle
+  - docker-compose.yml
+  - LICENSE
+  - _posts/2020-01-01-post-example.md
+  - _projects/project-example.md
+  - env

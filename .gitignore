@@ -1,0 +1,27 @@
+# Jekyll site output
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+
+# Bundler related
+.bundle/
+vendor/
+.vendor/
+vendor/bundle/
+
+# Dependency directories
+node_modules/
+
+# IDE and editor files
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# System Files
+.DS_Store
+Thumbs.db
+
+# Environment variables
+.env

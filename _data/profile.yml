@@ -1,0 +1,161 @@
+﻿# Profile Information
+name: Gaël Gendron
+title: Computer Science Engineer / PhD Student in Machine Learning and Causality
+subtitle: Building reasoning systems that can be trusted
+profile_photo: /assets/profile.jpeg
+
+# Background photo
+background_photo: /assets/background.jpg
+background_photo_caption: Lake Wakatipu, New Zealand
+
+# Contact Information
+email: gael.gendron@auckland.ac.nz
+
+# Bio Information
+short_bio: |-
+  I work on AI safety and robustness, focusing on building trustworthy AI systems able to reason in a reliable way,
+  based on factuality and causality. I am particularly interested in creating large reasoning models (LRMs) that can learn cause and effect relationships
+  from data and use them to perform strong and auditable reasoning in adversarial environments.
+  <br>
+  <br>
+  I am currently finishing my PhD at the University of Auckland at the intersection of deep learning and causality.
+  I showcased my work at top AI conferences and received the University of Auckland Best Student Published Paper in Computer Science award in 2023.
+  As part of my work, I conducted the [first evaluation of large language models (LLMs) on abstract reasoning](/projects/abstract-reasoning), highlighting their brittleness and limitations.
+  I developed a [novel modular language model architecture based on causal principles](/projects/iclm) for out-of-distribution reasoning, showed that causal models 
+  can improve the learning of interpretable, robust and domain-invariant mechanisms, and built the first [end-to-end framework for causal extraction and inference](/projects/counterfactual-inference) with LLM agents.
+
+# Research focus
+research_focus: >-
+  I work on building trustworthy AI systems that can reason and understand the world around them. My main interests are on factuality, abstract and causal 
+  reasoning, which are crucial for creating robust and reliable deep learning systems in real-world production environments.
+
+# Bio Photos Slideshow
+bio_photos:
+  - path: /assets/gsdc-panel.jpg
+    caption: My intervention at the Global Sustainable Development Congress (GSDC) 2024 panel on AI, sustainability and education.
+  - path: /assets/neurips2024-poster.jpg
+    caption: My poster presentation with Jože Rožanec at the Causality and Large Models workshop at NeurIPS 2024.
+  - path: /assets/ijcai2023-talk.jpg
+    caption: My talk at the IJCAI 2023 conference, in the Knowledge Representation and Reasoning session.
+
+# Education
+education: >-
+  I am finishing my PhD at the University of Auckland under the supervision of Prof. [Michael Witbrock](https://en.wikipedia.org/wiki/Michael_Witbrock) and Prof. [Gillian Dobbie](https://en.wikipedia.org/wiki/Gillian_Dobbie). 
+  I hold a Dipl. Ing. (eq. Msc. in software engineering) at the National Institute of Applied Sciences (INSA) of Rennes and a dual Msc. 
+  in computer science and machine learning from the University of Rennes 1. Before starting my PhD, I worked as a software engineer at 
+  Alten and Amadeus IT Group as a contractor where I developed C++ software for a key component of Amadeus's Global Distribution System, 
+  enhancing scalability of the retrieval pipeline. I also hold a research assistant position at the University of Auckland, where I lead
+  the research and development of neural-causal networks for behaviour discovery in multi-agent systems.
+
+# Research Highlights
+research_highlights: >-
+  I led the [first project](/projects/abstract-reasoning) to evaluate and point out the brittleness and limitations of LLMs for learning robust representations of abstract concepts.
+  I worked on showing that inducing LLMs and feedforward neural networks to behave as causal models can improve the learning of robust and 
+  domain-invariant mechanisms, building and fine-tuning a [novel modular language model architecture](/projects/iclm) based on causal principles for out-of-distribution 
+  abstract reasoning. I also created a [novel variational auto-encoder](/projects/disentanglement) based on latent space quantization and causal mechanisms.
+  I built the [first end-to-end framework](/projects/counterfactual-inference) for causal extraction and inference with large language model agents. I am currently expanding this framework to
+  enable LLMs to retrieve causal structures from natural language and harness them for knowledge discovery and reliable reasoning.
+  Finally, I led the research and development of an [open-source project](/projects/social-agents) building the first interpretable neural-causal network for behaviour
+  discovery in multi-agent systems.
+
+# Publications
+publications: >-
+  My research has been featured at CORE A* AI and machine learning conferences, including IJCAI, AAMAS, EMNLP, AAAI and ACL, 
+  and high-impact workshops such as AGI@ICLR, CV4Animals@CVPR, CaLM@NeurIPS, and CRL@NeurIPS.
+  Additionally, I serve as a reviewer for leading conferences like ICLR, EMNLP, ECML PKDD, and COLM. Find the complete list of my publications on my [Google Scholar profile](https://scholar.google.com/citations?user=ZW1IdHEAAAAJ).
+
+# Awards and Recognition
+awards: >-
+  In 2023, I was honored with the University of Auckland Best Student Published Paper in Computer Science award for [my paper on disentanglement
+  with causal interventions](https://dl.acm.org/doi/abs/10.24963/ijcai.2023/361). In 2024, I had the opportunity to present my work at the [IJCAI 2024 doctoral consortium](https://dl.acm.org/doi/abs/10.24963/ijcai.2024/960) and served as a panelist for 
+  the [Global Sustainable Development Congress (GSDC) 2024](https://www.timeshighered-events.com/gsd-congress-2024/agenda/speakers/3285102) alongside Profs. [Siah Hwee Ang](https://people.wgtn.ac.nz/siahhwee.ang) (Chair in Business in Asia at Victoria University of Wellington),
+  [Low Teck Seng](https://en.wikipedia.org/wiki/Low_Teck_Seng) (Senior Vice President at National University of Singapore), and [Banchong Mahaisavariya](https://op.mahidol.ac.th/ir/banchong/) (President of Mahidol University).
+  I also [featured](https://www.auckland.ac.nz/en/science/about-the-faculty/school-of-computer-science/our-compsci-people/meet-our-compsci-students-and-graduates/gael-gendron.html) in the [University of Auckland InSCight journal](https://www.auckland.ac.nz/assets/science/Our-research/inscight/InSCight_2024.pdf), which highlights the achievements of students and staff in the Faculty of Science, 
+  and delivered a talk at the Natural, Artificial and Organizational Intelligence Institute (NAOInstitute) symposium on Creativity and Intelligence.
+  I am also a recipient of the [DAAD AInet Fellowship for 2024 - AI for science](https://www.daad.de/en/the-daad/postdocnet/fellows/fellows/#Gendron). 
+
+# Research Schools
+research_schools:
+  In November 2020, I attended the research school on Contraint Programming, Combinatorial Optimization and Machine learning, jointly organized by 
+  the CNRS's Laboratory of Analysis and System Architectures (LAAS-CNRS), the Association for Constraint Programming (ACP), the Operational Research 
+  and Artificial Intelligence research groups (GDR RO and GDR IA), and the Artificial and Natural Intelligence Toulouse Institute. I learned about the 
+  latest advancements in constraint programming for machine learning and finished at the 4th place in the organized hackaton.
+  In March 2021, I attended the Reinforcement Learning Virtual School organised by the Artificial and Natural Intelligence Toulouse Institute and in 
+  September 2021, I once again attended the CNRS school on AI and Explainability, organised by the Pierre and Marie Curie University.
+
+# For backwards compatibility
+bio: >-
+  I work on building trustworthy AI systems that can reason and understand the world around them. My main interests are on factuality, abstract and causal 
+  reasoning, which are crucial for creating robust and reliable deep learning systems.
+
+  I am finishing my PhD at the University of Auckland under the supervision of Prof. Michael Witbrock and Prof. Gillian Dobbie. I hold a Dipl. Ing. (eq. Msc. in softwre engineering) at the National Institute of Applied Sciences (INSA) of Rennes  and a dual Msc. in computer science and machine learning from the University of Rennes 1.
+
+  I led a project that was the first to evaluate and point out the brittleness and limitations of LLMs for learning robust representations of abstract concepts.
+  Since then, I have been working on overcoming them to help LLMs learn knowledge that can be reused in new domains. I showed that inducing LLMs and 
+  feedforward neural networks to behave as causal models can improve the learning of robust and domain-invariant mechanisms in two separate domains: 
+  abstract reasoning and multi-agent natural systems. In a follow-up study, I worked on enabling LLMs to retrieve causal structures from 
+  natural language and harness them for knowledge discovery and reliable reasoning in counterfactual environments.
+  
+  I Built the first end-to-end framework for causal extraction and inference with large language model agents, using Structural Causal Models and 
+  teaching from interventions and counterfactuals
+
+  I Built and fine-tuned a novel modular language model architecture based on causal principles for efficient and domain-invariant
+  out-of-distribution reasoning
+
+  I led the research and development of an open-source project building the first interpretable neural-causal network for behaviour 
+  discovery in multi-agent systems with Pytorch, PyG and Tigramite
+
+  I Created a novel variational auto-encoder based on latent space quantization and causal mechanisms for robust and efficient representation learning
+
+  I have published in top-tier conferences in AI and machine learning, including IJCAI 2023/2024, AAMAS 2024, EMNLP 2024, ACL 2024, ICONIP 2024
+
+  I also published in workshops at top-tier conferences, including AGI@ICLR 2024, CaLM@NeurIPS 2024 and CRL@NeurIPS 2024, CV4Animals@CVPR 2023.
+
+  I also review for top-tier conferences in AI and machine learning, including ICLR, EMNLP, ECML PKDD, and COLM.
+
+  My research was awarded the University of Auckland's 2023 Best Student Published Paper in Computer Science.
+  
+  I am a recipient of the 2024 DAAD AInet Fellowship.
+
+  Speaker at the IJCAI 2024 student consortium.
+
+  Speaker for the 2024 Natural Artificial and Organizational Intelligence Institute symposium on Creativity and Intelligence.
+
+  Panelist for the 2024 Global Suatainable Development Congress alongside Profs. Siah Hwee Ang (Chair in Business in Asia at Victoria University of Wellington),
+  Low Teck Seng (Senior Vice President at National University of Singapore), and Banchong Mahaisavariya (President of Mahidol University).
+
+  I have been featured in the 2024 edition of the University of Auckland InSCight magazine 
+  (https://www.auckland.ac.nz/en/science/about-the-faculty/school-of-computer-science/our-compsci-people/meet-our-compsci-students-and-graduates/gael-gendron.html, 
+  https://www.auckland.ac.nz/assets/science/Our-research/inscight/InSCight_2024.pdf) 
+  and mentioned by the school of computer science: https://www.linkedin.com/feed/update/urn%3Ali%3Aactivity%3A7310406235957141505/
+
+# Resume/CV
+cv:
+  path: /assets/CV-Gendron-Gael.pdf
+  label: CV
+
+# Social Media Links
+social:
+  linkedin: 
+    url: https://www.linkedin.com/in/gael-gendron/
+    label: LinkedIn Profile
+    icon: fab fa-linkedin
+  github: 
+    url: https://github.com/ggendro
+    label: GitHub
+    icon: fab fa-github
+  scholar: 
+    url: https://scholar.google.com/citations?user=ZW1IdHEAAAAJ
+    label: Google Scholar
+    icon: fas fa-graduation-cap
+
+# Navigation
+navigation:
+  - name: Home
+    url: /index.html
+  - name: Research
+    url: /projects.html
+  - name: Blog
+    url: /blog.html
+  - name: About
+    url: /about.html

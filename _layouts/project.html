@@ -1,0 +1,86 @@
+﻿---
+layout: default
+---
+<div class="project-detail">
+    <header class="project-header">
+        <h1>{{ page.title }}</h1>
+        
+        {% if page.authors %}
+        <div class="project-authors">
+            <i class="fas fa-users"></i> 
+            <span>
+            {% for author in page.authors %}
+                {% if author == site.data.profile.name %}
+                    <span class="author-highlight">{{ author }}</span>{% unless forloop.last %}, {% endunless %}
+                {% else %}
+                    {{ author }}{% unless forloop.last %}, {% endunless %}
+                {% endif %}
+            {% endfor %}
+            </span>
+        </div>
+        {% endif %}
+        
+        {% if page.technologies %}
+        <div class="project-technologies">
+            {% for tech in page.technologies %}
+            <span class="tech-tag">{{ tech }}</span>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </header>
+
+    {% if page.thumbnail %}
+    <div class="project-featured-image">
+        <img src="{{ page.thumbnail }}" alt="{{ page.title }}" />
+    </div>
+    {% endif %}
+
+    <div class="project-links">
+        {% if page.github_link %}
+        <a href="{{ page.github_link }}" class="project-button github-button" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-github"></i> GitHub Repository
+        </a>
+        {% endif %}
+        
+        {% if page.paper_link %}
+        <a href="{{ page.paper_link }}" class="project-button paper-button" target="_blank" rel="noopener noreferrer">
+            <i class="fas fa-file-alt"></i> Research Paper
+        </a>
+        {% endif %}
+        
+        {% if page.paper_links %}
+        {% for paper in page.paper_links %}
+        <a href="{{ paper.url }}" class="project-button paper-button" target="_blank" rel="noopener noreferrer">
+            <i class="fas fa-file-alt"></i> {{ paper.name | capitalize }}
+        </a>
+        {% endfor %}
+        {% endif %}
+        
+        {% if page.demo_link %}
+        <a href="{{ page.demo_link }}" class="project-button demo-link" target="_blank" rel="noopener noreferrer">
+            <i class="fas fa-external-link-alt"></i> Live Demo
+        </a>
+        {% endif %}
+    </div>
+
+    <div class="project-content">
+        {{ content }}
+    </div>
+
+<div class="project-navigation">
+    <div class="navigation-container">
+        {% if page.previous.url %}
+        <a class="prev-project" href="{{ page.previous.url }}">
+            <i class="fas fa-arrow-left"></i> 
+            <span class="nav-title">{{ page.previous.title }}</span>
+        </a>
+        {% endif %}
+        
+        {% if page.next.url %}
+        <a class="next-project" href="{{ page.next.url }}">
+            <span class="nav-title">{{ page.next.title }}</span> 
+            <i class="fas fa-arrow-right"></i>
+        </a>
+        {% endif %}
+    </div>
+</div>

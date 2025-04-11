@@ -1,0 +1,163 @@
+---
+layout: default
+---
+
+<header>
+    <h1>About</h1>
+</header>
+
+<div class="about-container">
+    <main class="about-main with-bg-pattern">
+        
+        <!-- Introduction section - Keeping this as a highlight since it's the main focus -->
+        <section class="about-intro-section">
+            <div class="section-highlight">
+                <h2>Research Focus</h2>
+                <div class="accent-line"></div>
+                <p>{{ site.data.profile.research_focus | markdownify }}</p>
+            </div>
+        </section>
+        
+        <!-- Featured bio image slideshow -->
+        <section class="about-featured-image-container">
+            <div class="slideshow-container">
+                {% for photo in site.data.profile.bio_photos %}
+                <div class="slideshow-slide fade">
+                    <img src="{{ photo.path }}" alt="{{ photo.caption }}">
+                    <figcaption>{{ photo.caption }}</figcaption>
+                </div>
+                {% endfor %}
+                
+                <!-- Navigation arrows -->
+                <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
+                <a class="next" onclick="changeSlide(1)">&#10095;</a>
+            </div>
+            
+            <!-- Dots/indicators -->
+            <div class="slideshow-dots">
+                {% for photo in site.data.profile.bio_photos %}
+                <span class="dot" onclick="currentSlide({{ forloop.index }})"></span>
+                {% endfor %}
+            </div>
+        </section>
+
+        <!-- Education section - Using balanced styling -->
+        <section class="balanced-section">
+            <h2>Education & Background</h2>
+            <div class="section-content">
+                <p>{{ site.data.profile.education | markdownify }}</p>
+            </div>
+        </section>
+        
+        <!-- Research Highlights section - Using balanced highlight styling -->
+        <section class="balanced-highlight-section">
+            <h2>Research Highlights</h2>
+            <div class="section-content">
+                <p>{{ site.data.profile.research_highlights | markdownify }}</p>
+            </div>
+        </section>
+        
+        <!-- Publications section - Using balanced styling -->
+        <section class="balanced-section">
+            <h2>Publications</h2>
+            <div class="section-content">
+                <p>{{ site.data.profile.publications | markdownify }}</p>
+            </div>
+        </section>
+        
+        <!-- Awards and Recognition section - Using balanced styling -->
+        <section class="balanced-section">
+            <h2>Awards & Recognition</h2>
+            <div class="section-content">
+                <p>{{ site.data.profile.awards | markdownify }}</p>
+            </div>
+        </section>
+        
+        <!-- Research Schools section - Using balanced styling -->
+        <section class="balanced-section">
+            <h2>Research Schools</h2>
+            <div class="section-content">
+                <p>{{ site.data.profile.research_schools | markdownify }}</p>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Contact sidebar -->
+    <aside class="contact-sidebar">
+        <div class="contact-box">
+            <h3>Contact</h3>
+            <p>Feel free to reach out for research collaborations or discussions.</p>
+            
+            <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <a href="mailto:{{ site.data.profile.email }}" class="site-link">{{ site.data.profile.email }}</a>
+            </div>
+            
+            <div class="contact-item">
+                <i class="fab fa-linkedin"></i>
+                <a href="{{ site.data.profile.social.linkedin.url }}" target="_blank" class="site-link">LinkedIn Profile</a>
+            </div>
+            
+            <div class="cv-download">
+                <a href="{{ site.data.profile.cv.path }}" class="cv-button" target="_blank">
+                    <i class="fas fa-file-pdf"></i> Download CV
+                </a>
+            </div>
+        </div>
+    </aside>
+</div>
+
+<!-- Slideshow JavaScript -->
+<script>
+    let slideIndex = 1;
+    let slideTimer;
+    const slideDuration = 5000; // Change image every 5 seconds
+    
+    // Initialize the slideshow when page loads
+    document.addEventListener('DOMContentLoaded', function() {
+        showSlides(slideIndex);
+        autoSlide();
+    });
+    
+    // Next/previous controls
+    function changeSlide(n) {
+        clearTimeout(slideTimer);
+        showSlides(slideIndex += n);
+        autoSlide();
+    }
+    
+    // Thumbnail image controls
+    function currentSlide(n) {
+        clearTimeout(slideTimer);
+        showSlides(slideIndex = n);
+        autoSlide();
+    }
+    
+    // Automatic slideshow
+    function autoSlide() {
+        slideTimer = setTimeout(() => {
+            showSlides(slideIndex += 1);
+            autoSlide();
+        }, slideDuration);
+    }
+    
+    function showSlides(n) {
+        let i;
+        let slides = document.getElementsByClassName("slideshow-slide");
+        let dots = document.getElementsByClassName("dot");
+        
+        if (n > slides.length) {slideIndex = 1}
+        if (n < 1) {slideIndex = slides.length}
+        
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        
+        slides[slideIndex-1].style.display = "block";
+        dots[slideIndex-1].className += " active";
+    }
+</script>

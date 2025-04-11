@@ -1,0 +1,8 @@
+﻿# Page Titles
+home: Homepage
+projects: Projects
+blog: Blog
+about: About
+
+# Title Format
+format: "%name% - %title%"
