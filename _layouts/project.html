@@ -31,7 +31,10 @@ layout: default
 
     {% if page.thumbnail %}
     <div class="project-featured-image">
-        <img src="{{ page.thumbnail }}" alt="{{ page.title }}" />
+        <figure class="about-featured-image">
+            <img src="{{ page.thumbnail }}" alt="{{ page.thumbnail_caption }}">
+            <figcaption>{{ page.thumbnail_caption }}</figcaption>
+        </figure>
     </div>
     {% endif %}
 
