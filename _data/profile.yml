@@ -1,6 +1,6 @@
 ﻿# Profile Information
 name: Gaël Gendron
-title: Computer Science Engineer / PhD Student in Machine Learning and Causality
+title: Machine Learning Engineer / PhD Student in AI, Causality and Reasoning
 subtitle: Building reasoning systems that can be trusted
 profile_photo: /assets/profile.jpeg
 
@@ -9,25 +9,22 @@ background_photo: /assets/background.jpg
 background_photo_caption: Lake Wakatipu, New Zealand
 
 # Contact Information
-email: gael.gendron@auckland.ac.nz
+email: ggen187@aucklanduni.ac.nz
 
 # Bio Information
 short_bio: |-
-  I work on AI safety and robustness, focusing on building trustworthy AI systems able to reason in a reliable way,
-  based on factuality and causality. I am particularly interested in creating large reasoning models (LRMs) that can learn cause and effect relationships
-  from data and use them to perform strong and auditable reasoning in adversarial environments.
+  I am Gaël *(pron. [gah-el])*, a PhD student at the University of Auckland, New Zealand, creating trustworthy AI systems that can reason and understand the world around them.
+  I focus on making safe, reliable and robust AI based on factuality and causality, with a particular interest in large reasoning models (LLMs/LRMs).
   <br>
   <br>
-  I am currently finishing my PhD at the University of Auckland at the intersection of deep learning and causality.
   I showcased my work at top AI conferences and received the University of Auckland Best Student Published Paper in Computer Science award in 2023.
   As part of my work, I conducted the [first evaluation of large language models (LLMs) on abstract reasoning](/projects/abstract-reasoning), highlighting their brittleness and limitations.
-  I developed a [novel modular language model architecture based on causal principles](/projects/iclm) for out-of-distribution reasoning, showed that causal models 
-  can improve the learning of interpretable, robust and domain-invariant mechanisms, and built the first [end-to-end framework for causal extraction and inference](/projects/counterfactual-inference) with LLM agents.
+  I developed [ICLM](/projects/iclm), a novel modular language model architecture based on causal principles for out-of-distribution reasoning, and showed that causal models 
+  can improve the learning of interpretable, robust and domain-invariant mechanisms. My latest work, the [Causal Cartographer](/projects/causal-cartographer) is the first end-to-end framework for causal extraction and inference with LLM agents, enabling them to reason more reliably and efficiently in counterfactual environments (decreasing inference cost by up to 70%).
 
 # Research focus
 research_focus: >-
-  I work on building trustworthy AI systems that can reason and understand the world around them. My main interests are on factuality, abstract and causal 
-  reasoning, which are crucial for creating robust and reliable deep learning systems in real-world production environments.
+  I work on building trustworthy AI systems that can reason and understand the world around them. My main interests are on factuality, abstract and causal reasoning, which are crucial for creating robust and reliable systems that can act and be trusted in real-world production environments.
 
 # Bio Photos Slideshow
 bio_photos:
@@ -43,26 +40,25 @@ education: >-
   I am finishing my PhD at the University of Auckland under the supervision of Prof. [Michael Witbrock](https://en.wikipedia.org/wiki/Michael_Witbrock) and Prof. [Gillian Dobbie](https://en.wikipedia.org/wiki/Gillian_Dobbie). 
   I hold a Dipl. Ing. (eq. Msc. in software engineering) at the National Institute of Applied Sciences (INSA) of Rennes and a dual Msc. 
   in computer science and machine learning from the University of Rennes 1. Before starting my PhD, I worked as a software engineer at 
-  Alten and Amadeus IT Group as a contractor where I developed C++ software for a key component of Amadeus's Global Distribution System, 
+  Alten and Amadeus IT Group as a contractor where I developed C++ software for a key component of Amadeus' Global Distribution System, 
   enhancing scalability of the retrieval pipeline. I also hold a research assistant position at the University of Auckland, where I lead
   the research and development of neural-causal networks for behaviour discovery in multi-agent systems.
 
 # Research Highlights
 research_highlights: >-
-  I led the [first project](/projects/abstract-reasoning) to evaluate and point out the brittleness and limitations of LLMs for learning robust representations of abstract concepts.
-  I worked on showing that inducing LLMs and feedforward neural networks to behave as causal models can improve the learning of robust and 
-  domain-invariant mechanisms, building and fine-tuning a [novel modular language model architecture](/projects/iclm) based on causal principles for out-of-distribution 
-  abstract reasoning. I also created a [novel variational auto-encoder](/projects/disentanglement) based on latent space quantization and causal mechanisms.
-  I built the [first end-to-end framework](/projects/counterfactual-inference) for causal extraction and inference with large language model agents. I am currently expanding this framework to
-  enable LLMs to retrieve causal structures from natural language and harness them for knowledge discovery and reliable reasoning.
-  Finally, I led the research and development of an [open-source project](/projects/social-agents) building the first interpretable neural-causal network for behaviour
-  discovery in multi-agent systems.
+  I led the first [project](/projects/abstract-reasoning) that evaluated and pointed out the brittleness and limitations of LLMs for learning robust representations of abstract concepts.
+  I showed that inducing LLMs and feedforward neural networks to behave as causal models can improve the learning of robust and 
+  domain-invariant mechanisms, demonstrating it by creating [ICLM](/projects/iclm), a modular language model architecture based on causal principles for out-of-distribution 
+  abstract reasoning. I am also the creator of the [CT-VAE](/projects/disentanglement), a variational auto-encoder based on latent space quantization and causal mechanisms.
+  I presented [a new direction](/projects/counterfactual-inference) for causal extraction and inference with large language model agents, which I realised with the [Causal Cartographer](/projects/causal-cartographer), an end-to-end framework
+  enabling LLMs to retrieve causal structures from natural language and harness them for knowledge discovery and reliable reasoning, effectively decreasing inference cost up to 70%.
+  Finally, I led the research and development of an [open-source project](/projects/social-agents) building the first interpretable neural-causal network for behaviour discovery in multi-agent systems.
 
 # Publications
 publications: >-
   My research has been featured at CORE A* AI and machine learning conferences, including IJCAI, AAMAS, EMNLP, AAAI and ACL, 
   and high-impact workshops such as AGI@ICLR, CV4Animals@CVPR, CaLM@NeurIPS, and CRL@NeurIPS.
-  Additionally, I serve as a reviewer for leading conferences like ICLR, EMNLP, ECML PKDD, and COLM. Find the complete list of my publications on my [Google Scholar profile](https://scholar.google.com/citations?user=ZW1IdHEAAAAJ).
+  Additionally, I serve as a reviewer for leading conferences like NeurIPS, ICLR, EMNLP, ECML PKDD, and COLM. Find the complete list of my publications on my [Google Scholar profile](https://scholar.google.com/citations?user=ZW1IdHEAAAAJ).
 
 # Awards and Recognition
 awards: >-
