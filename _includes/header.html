@@ -8,22 +8,22 @@
         </button>
         <ul class="menu-items">
             <!-- Always show Home menu item -->
-            <li><a href="/index.html">Home</a></li>
+            <li><a href="/index.html" {% if page.url == "/" or page.url == "/index.html" %}class="active"{% endif %}>Home</a></li>
             
             <!-- Only show Projects menu item if there are projects -->
             {% assign project_count = site.projects | size %}
             {% if project_count > 0 %}
-            <li><a href="/projects.html">Research</a></li>
+            <li><a href="/projects.html" {% if page.url == "/projects.html" or page.url contains "/projects/" %}class="active"{% endif %}>Research</a></li>
             {% endif %}
             
             <!-- Only show Blog menu item if there are blog posts -->
             {% assign post_count = site.posts | size %}
             {% if post_count > 0 %}
-            <li><a href="/blog.html">Blog</a></li>
+            <li><a href="/blog.html" {% if page.url == "/blog.html" or page.url contains "/blog/" or page.url contains "/posts/" %}class="active"{% endif %}>Blog</a></li>
             {% endif %}
             
             <!-- Always show About menu item -->
-            <li><a href="/about.html">About</a></li>
+            <li><a href="/about.html" {% if page.url == "/about.html" %}class="active"{% endif %}>About</a></li>
             
             <li><a href="{{ site.data.profile.cv.path | relative_url }}" target="_blank">{{ site.data.profile.cv.label }}</a></li>
             <li class="social-icons">

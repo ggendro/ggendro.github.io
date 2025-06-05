@@ -111,17 +111,6 @@
                     setTheme(e.matches ? 'dark' : 'light');
                 }
             });
-
-            // Set active class for current page
-            const currentPath = window.location.pathname;
-            const navLinks = document.querySelectorAll('.menu-items a');
-            
-            navLinks.forEach(link => {
-                if (link.getAttribute('href') === currentPath || 
-                    (currentPath === '/' && link.getAttribute('href') === '/index.html')) {
-                    link.classList.add('active');
-                }
-            });
             
             // Mobile menu toggle functionality
             const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
