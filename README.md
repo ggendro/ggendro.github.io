@@ -8,7 +8,7 @@ This is the source code for my personal website built with Jekyll and hosted on 
 
 This project is set up to run in Docker, which makes it easy to get started without installing Ruby or Jekyll directly on your machine.
 
-1. Make sure you have [Docker](https://www.docker.com/get-started) and Docker Compose installed
+1. Make sure you have [Docker](https://www.docker.com/get-started) and Docker Compose installed (and running)
 2. Clone this repository
 3. Navigate to the project directory
 4. Run the following command:
