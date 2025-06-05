@@ -39,15 +39,19 @@ featured: true
 
 This project focuses on modelling the behaviours of natural social agents (e.g. a mob of meerkats) and representing their inner cognitive models as complex causal graphs. We propose to discover the causal structure of the agents' behaviours from data and combine it with a graph neural network (GNN) to model information propagation in an action network. Our approach showed better efficiency than other neural-based methods, while also being more interpretable.
 
+![Proposed pipeine: we extract behavioral information from video and build a causal model explaining meerkat cognition.](/assets/projects/animal-behavior-pipeline.png)
+
 ## Key Takeaways
 
-**Dataset** As part of this project, we collected a large dataset of annotated meerkat behaviours, which is the first of its kind. We released the dataset publicly.
+**Dataset** As part of this project, we collected a large dataset of annotated meerkat behaviours, which is the first of its kind. We released the [dataset](https://arxiv.org/abs/2306.11326) publicly.
 
-**Causal Structure Discovery** We propose an interpretable method for modelling and predicting the behaviours of social agents using causal structure discovery and graph neural networks. 
+**Causal Structure Discovery** We propose an interpretable method for modelling and predicting the behaviours of social agents using causal structure discovery and graph neural networks (technical details can be found in the paper). 
 
-**Experiments** We apply our method over a group of meerkats and show that it competes with standard architectures while being more efficient and interpretable, outperforming them in low temporal context settings.
+**Experiments** We apply our method over a group of meerkats from the Wellington zoo and show that our proposed pipeline competes with standard architectures while being more efficient and interpretable, outperforming them in low information settings.
 
-**Simulation** We also show that our method can be used to simulate the behaviours of social agents over time, yielding more realistic behavioural sequences than its neural counterparts.
+**Simulation** We also show that our method can be used to simulate the behaviours of social agents over time, yielding more realistic behavioural sequences than methods based only on neural networks.
+
+![Visualization of individual meerkat movements, behaviours and interactions.](/assets/projects/visualisation_meerkats_example.gif)
 
 ## Future Directions
 

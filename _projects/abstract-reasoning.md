@@ -1,9 +1,8 @@
 ---
 layout: project
-title: Evaluation of LLMs on Abstract Reasoning
+title: Large Language Models Are Not Strong Abstract Reasoners
 date: 2023-05-31
-thumbnail: /assets/projects/raven-example.jpg
-thumbnail_caption: Example of a Raven's Progressive Matrices task.
+thumbnail: /assets/projects/abstract-visualization.jpg
 authors:
   - Gaël Gendron
   - Qiming Bao
@@ -27,9 +26,9 @@ This project was the first attempt to evaluate large language models (LLMs) on a
 
 **New Benchmark**: We build a large benchmark of text-based abstract reasoning tasks.
 
-**Evaluation of LLMs**: We evaluate the performance of large language models on abstract reasoning tasks, including the best models at the time (GPT-4, LLaMA-2, etc.) with different prompting methods (direct, CoT, few-shot, self-refinement, code-refinement) and using LoRA fine-tuning.
+**Evaluation of LLMs**: We evaluate the performance of large language models on abstract reasoning tasks, including GPT-4, LLaMA-2, etc. with different prompting methods (direct, CoT, few-shot, self-refinement, code-refinement) and using LoRA fine-tuning. Look into the [paper](https://dl.acm.org/doi/abs/10.24963/ijcai.2024/693) for the numerical results!
 
-**Impact of Training and Fine-tuning**: We show that prompt-tuning methods are not sufficient to adapt LLMs to abstract reasoning tasks, and that fine-tuning models, while improving performance, does not lead to better generalization.
+**Generalization Failure with Training and Fine-tuning**: We show that prompt-tuning methods are not sufficient to adapt LLMs to abstract reasoning tasks, and that fine-tuning models, while improving performance, does not lead to better generalization. Building systems of higher cognition would require additional breakthroughs in model architectures and training methods. 
 
 ## Future Directions 
 

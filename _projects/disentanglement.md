@@ -32,7 +32,7 @@ regularized to represent high-level semantic concepts (i.e. factors of variation
 
 **Experiments**: We test our model on toy image autoencoding datasets and show that it can yield disentangled representations, effectively separating factors of variation.
 
-**Quantized Latent Space**: We raise questions on the nature of disentanglement in discrete settings.
+**Quantized Latent Space**: We raise an important question on the nature of disentanglement in discrete settings: standard disentanglement frameworks assume a continuous latent space, but we show that it is possible to achieve disentanglement in a discrete latent space by using causal interventions, quantas of information representing high-level semantic concepts.
 
 ## Future Directions
 

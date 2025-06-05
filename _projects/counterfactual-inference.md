@@ -23,11 +23,11 @@ featured: true
 
 ## Overview
 
-This project aims to build automatic systems able to parse texts for causal structures and perform causal inference to identify reasoning inconsistencies, build counterfactual scenarios, and evaluate the impact of interventions. We use LLMs to perform causal extraction and counterfactual inference, following interpretable causal principles.
+This project aims to build automatic systems able to parse texts for causal structures and perform causal inference to identify reasoning inconsistencies, build counterfactual scenarios, and evaluate the impact of interventions. We propose a direction to use LLMs to perform causal extraction and counterfactual inference, following interpretable causal principles.
 
 ## Key Takeaways
 
-**Causal Extraction**: We propose to alleviate limitations of LLMs to represent causal relationships by relying on existing causal knowledge and siply parse it using causal extraction.
+**Causal Extraction**: We propose to alleviate limitations of LLMs to represent causal relationships by relying on existing causal knowledge and parse it using causal extraction.
 
 **Counterfactual Inference**: We use standard principles of abduction, intervention and prediction for rigorously computing counterfactuals and adapt them to the natural language domain.
 
