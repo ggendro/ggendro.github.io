@@ -39,7 +39,14 @@ featured: true
 
 This project focuses on modelling the behaviours of natural social agents (e.g. a mob of meerkats) and representing their inner cognitive models as complex causal graphs. We propose to discover the causal structure of the agents' behaviours from data and combine it with a graph neural network (GNN) to model information propagation in an action network. Our approach showed better efficiency than other neural-based methods, while also being more interpretable.
 
-![Proposed pipeine: we extract behavioral information from video and build a causal model explaining meerkat cognition.](/assets/projects/animal-behavior-pipeline.png)
+
+<figure class="featured-image" markdown="0">
+  <img src="/assets/projects/animal-behavior-pipeline.png" alt="Proposed pipeline: we extract behavioral information from video and build a causal model explaining meerkat cognition.">
+  <figcaption>
+      Proposed pipeline: we extract behavioral information from video and build a causal model explaining meerkat cognition.
+  </figcaption>
+</figure>
+
 
 ## Key Takeaways
 
@@ -51,7 +58,13 @@ This project focuses on modelling the behaviours of natural social agents (e.g. 
 
 **Simulation** We also show that our method can be used to simulate the behaviours of social agents over time, yielding more realistic behavioural sequences than methods based only on neural networks.
 
-![Visualization of individual meerkat movements, behaviours and interactions.](/assets/projects/visualisation_meerkats_example.gif)
+<figure class="featured-image" markdown="0">
+  <img src="/assets/projects/visualisation_meerkats_example.gif" 
+       alt="Visualization of individual meerkat movements, behaviours and interactions.">
+  <figcaption>
+    Visualization of individual meerkat movements, behaviours and interactions.
+  </figcaption>
+</figure>
 
 ## Future Directions
 

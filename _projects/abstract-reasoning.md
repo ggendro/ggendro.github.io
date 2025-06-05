@@ -13,7 +13,7 @@ technologies:
   - Large Language Models
   - Abstract Reasoning
   - Evaluation
-  - Out-of-distribution Generalization
+  - Out-Of-Distribution Generalization
 github_link: https://github.com/Strong-AI-Lab/Logical-and-abstract-reasoning
 paper_link: https://dl.acm.org/doi/abs/10.24963/ijcai.2024/693
 featured: true

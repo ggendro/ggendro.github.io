@@ -25,7 +25,13 @@ featured: true
 
 We introduce the **Causal Cartographer**, a retrieval-augmented system for causal extraction and causal knowledge representation, and a methodology for provably estimating real-world counterfactuals. We show that causal-guided step-by-step LRMs can achieve competitive performance while greatly reducing LLMs' context and output length, decreasing inference cost up to 70%.
 
-![The Causal Cartographer architecture diagram](/assets/projects/causal-cartographer.png)
+<figure class="about-featured-image" markdown="0">
+  <img src="/assets/projects/causal-cartographer.png"
+       alt="The Causal Cartographer architecture diagram.">
+  <figcaption>
+    The Causal Cartographer architecture diagram.
+  </figcaption>
+</figure>
 
 The Causal Cartographer (figure above) is the resulting instantiation of the idea developed in our [Counterfactual Causal Inference in Natural Language](/projects/counterfactual-inference) project, which aims to build automatic systems able to parse texts for causal structures and take advantage of them to conduct robust reasoning, specifically reasoning abut causes and effects, build counterfactual scenarios, and evaluate the impact of interventions in an environment.
 
@@ -37,7 +43,13 @@ The Causal Cartographer is composed of two modules: a **retrieval** and a **reas
 
 CausalWorld is the intermediate causal knowledge mapped by the cartographer, a large-scale causal knowledge graph of the real world. An overview of CausalWorld is shown at the top of the page and an example of causal chain is shown below.
 
-![example of causal chains mapped in CausalWorld, information related to variable instantiation is omitted.](/assets/projects/causalworld-example.png)
+<figure class="about-featured-image" markdown="0">
+  <img src="/assets/projects/causalworld-example.png" 
+       alt="Example of causal chains mapped in CausalWorld, information related to variable instantiation is omitted.">
+  <figcaption>
+    Example of causal chains mapped in CausalWorld, information related to variable instantiation is omitted.
+  </figcaption>
+</figure>
 
 In addition to representing causal knowledge, CausalWorld can be used to estimate real-world counterfactuals. Information collected from various sources can be mapped as different instantiations of a same variable (e.g. the biofuel demand can differ between different countries, or the same country at different times). Given sufficient information, alternative worlds can be constructed, counterfactuals of each other, representing of the same variables would evolve under different conditions. The Causal Cartographer can then estimate the effects of interventions in these worlds, and thus estimate real-world counterfactuals.
 
@@ -51,7 +63,13 @@ In addition to representing causal knowledge, CausalWorld can be used to estimat
 
 **Experiments**: We show that the Causal Cartographer (CTG) can achieve competitive performance on real-world counterfactual reasoning tasks (extracted from CausalWorld) while demonstrating increasing robustness. Numerical results are available in the [paper](https://arxiv.org/abs/2505.14396). It is also much more efficient. Compared with chain-of-thought, it greatly reduce LLMs' context and output length, decreasing inference cost up to 70%.
 
-![Causal Cartographer efficiency.](/assets/projects/ctg-efficiency.png)
+<figure class="about-featured-image" markdown="0">
+  <img src="/assets/projects/ctg-efficiency.png" 
+       alt="Causal Cartographer efficiency.">
+  <figcaption>
+    Causal Cartographer efficiency.
+  </figcaption>
+</figure>
 
 ## Future Directions
 
