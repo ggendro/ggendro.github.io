@@ -1,6 +1,6 @@
 ﻿# Profile Information
 name: Gaël Gendron
-title: Machine Learning Engineer / PhD Student in AI, Causality and Reasoning
+title: AI Research Scientist @ LawZero
 subtitle: Building reasoning systems that can be trusted
 profile_photo: /assets/profile.jpeg
 
@@ -13,7 +13,7 @@ email: ggen187@aucklanduni.ac.nz
 
 # Bio Information
 short_bio: |-
-  I am Gaël *(pron. [gah-el])*, a PhD student at the University of Auckland, New Zealand, creating trustworthy AI systems that can reason and understand the world around them.
+  I am Gaël *(pron. [gah-el])*, senior machine learning research scientist at [LawZero](https://lawzero.org/en/research), a nonprofit organization created by Yoshua Bengio. I work on building the [ScientistAI](https://arxiv.org/abs/2502.15657), a safe-by-design AI system that can reason and discover new scientific knowledge about the world.
   I focus on making safe, reliable and robust AI based on factuality and causality, with a particular interest in large reasoning models (LLMs/LRMs).
   <br>
   <br>
@@ -37,11 +37,11 @@ bio_photos:
 
 # Education
 education: >-
-  I am finishing my PhD at the University of Auckland under the supervision of Prof. [Michael Witbrock](https://en.wikipedia.org/wiki/Michael_Witbrock) and Prof. [Gillian Dobbie](https://en.wikipedia.org/wiki/Gillian_Dobbie). 
-  I hold a Dipl. Ing. (eq. Msc. in software engineering) at the National Institute of Applied Sciences (INSA) of Rennes and a dual Msc. 
-  in computer science and machine learning from the University of Rennes 1. Before starting my PhD, I worked as a software engineer at 
-  Alten and Amadeus IT Group as a contractor where I developed C++ software for a key component of Amadeus' Global Distribution System, 
-  enhancing scalability of the retrieval pipeline. I also hold a research assistant position at the University of Auckland, where I lead
+  I did my Ph.D at the University of Auckland under the supervision of Prof. [Michael Witbrock](https://en.wikipedia.org/wiki/Michael_Witbrock) and Prof. [Gillian Dobbie](https://en.wikipedia.org/wiki/Gillian_Dobbie). 
+  I hold a Dipl. Ing. (eq. M.Sc in software engineering) at the National Institute of Applied Sciences (INSA) of Rennes and a dual M.Sc 
+  in computer science and machine learning from the University of Rennes 1. Before starting my Ph.D, I worked as a software engineer at
+  Alten and Amadeus IT Group as a contractor where I developed C++ software for a key component of Amadeus' Global Distribution System,
+  enhancing scalability of the retrieval pipeline. I also worked as a research assistant at the University of Auckland, where I led
   the research and development of neural-causal networks for behaviour discovery in multi-agent systems.
 
 # Research Highlights
