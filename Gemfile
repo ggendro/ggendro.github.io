@@ -1,7 +1,8 @@
 source "https://rubygems.org"
 
-gem "jekyll", "~> 3.9.2"
-gem "minima", "~> 2.5"
-gem "jekyll-feed", "~> 0.12"
-gem "webrick", "~> 1.7"
-gem "kramdown-parser-gfm", "~> 1.1.0"
+# Mirrors the GitHub Pages build environment (Jekyll, minima, jekyll-feed,
+# kramdown-parser-gfm, ...). Keep in sync with https://pages.github.com/versions/
+gem "github-pages", "= 232", group: :jekyll_plugins
+
+# Needed for `jekyll serve` on Ruby >= 3.0
+gem "webrick", "~> 1.8"
