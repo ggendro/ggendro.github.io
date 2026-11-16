@@ -22,7 +22,7 @@
     {% endif %}
     {% seo title=false %}
     {% if site.posts.size > 0 %}{% feed_meta %}{% endif %}
-    
+
     <!-- Prevent flash of unstyled content when in dark mode -->
     <script>
         // Immediately set the theme before any content renders
@@ -82,10 +82,12 @@
             const lightIcon = document.querySelector('#theme-toggle-light');
             const darkIcon = document.querySelector('#theme-toggle-dark');
         
-            // Function to set the theme
-            function setTheme(theme) {
+            // Function to set the theme; only explicit user choices are persisted
+            function setTheme(theme, persist) {
                 document.documentElement.setAttribute('data-theme', theme);
-                localStorage.setItem('theme', theme);
+                if (persist) {
+                    localStorage.setItem('theme', theme);
+                }
                 
                 // Update the icons
                 if (theme === 'dark') {
@@ -103,14 +105,14 @@
             // Handle button click
             toggleButton.addEventListener('click', function() {
                 const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-                setTheme(theme);
+                setTheme(theme, true);
             });
             
             // Listen for system theme changes
             window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
                 // Only apply if the user hasn't explicitly chosen a theme
                 if (!localStorage.getItem('theme')) {
-                    setTheme(e.matches ? 'dark' : 'light');
+                    setTheme(e.matches ? 'dark' : 'light', false);
                 }
             });
             
