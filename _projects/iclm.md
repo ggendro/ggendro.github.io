@@ -3,14 +3,14 @@ layout: project
 title: Independent Causal Language Models
 date: 2024-02-04
 thumbnail: /assets/projects/domain-independent-mechanisms.jpg
-thumbnail_caption: Illustration of the Independent Causal Mechanisms (ICM) priciple.
+thumbnail_caption: Illustration of the Independent Causal Mechanisms (ICM) principle.
 authors:
   - Gaël Gendron
   - Bao Trung Nguyen
   - Alex Peng
   - Michael Witbrock
   - Gillian Dobbie
-excerpt: We develop a novel modular language model architecture sparating inference into independant causal modules, and show that it can be used to improve abstract reasoning performance and robustness for out-of-distribution settings.
+excerpt: We develop a novel modular language model architecture separating inference into independent causal modules, and show that it can be used to improve abstract reasoning performance and robustness for out-of-distribution settings.
 technologies:
   - Large Language Models
   - Abstract Reasoning
@@ -28,23 +28,23 @@ In this project, we develop **Independent Causal Language Models** (ICLMs), a no
 
 <figure class="about-featured-image" markdown="0">
   <img src="/assets/projects/iclm-architecture.jpeg" 
-       alt="Independent Causal Mechanisms (ICLM) architecture diagram.">
+       alt="Independent Causal Language Models (ICLM) architecture diagram.">
   <figcaption>
-    Independent Causal Mechanisms (ICLM) architecture diagram.
+    Independent Causal Language Models (ICLM) architecture diagram.
   </figcaption>
 </figure>
 
 
-The architecture (above) consists of an (LLM) **router module** that selects the appropriate (LLM) **reasoning modules** based on the input. Each module is trained on trained on an independent distribution with Low-Rank Adaptation (LoRA) fine-tuning, allowing each to specialize to specific tasks while maintaining independence from each other. The router module uses a clustering mechanism to select the most relevant module for a given input, ensuring that the model can adapt to various tasks on the fly. An additional **invariant module** is trained on all distributions to represent the common knowledge shared across all modules, allowing the model to generalize better to unseen tasks. See the [paper](https://aclanthology.org/2024.emnlp-main.381/) for more details on the model architecture and training procedure.
+The architecture (above) consists of an (LLM) **router module** that selects the appropriate (LLM) **reasoning modules** based on the input. Each module is trained on an independent distribution with Low-Rank Adaptation (LoRA) fine-tuning, allowing each to specialize in specific tasks while maintaining independence from each other. The router module uses a clustering mechanism to select the most relevant module for a given input, ensuring that the model can adapt to various tasks on the fly. An additional **invariant module** is trained on all distributions to represent the common knowledge shared across all modules, allowing the model to generalize better to unseen tasks. See the [paper](https://aclanthology.org/2024.emnlp-main.381/) for more details on the model architecture and training procedure.
 
 ## Key Takeaways
 
-**Model Architecture**: ICLMs are modular language models that separate inference into independent causal modules, jointly trained with Low-Rank Adaptation (LoRA) fine-tuning. Each module specializes on a distribution, following the signal of a router module.
+**Model Architecture**: ICLMs are modular language models that separate inference into independent causal modules, jointly trained with Low-Rank Adaptation (LoRA) fine-tuning. Each module specializes in a distribution, following the signal of a router module.
 
-**Experiments**: We evaluate ICLMs on a abstract reasoning tasks and show that including causal principles into LLMs can improve strong reasoning and generalization.
+**Experiments**: We evaluate ICLMs on abstract reasoning tasks and show that including causal principles into LLMs can improve strong reasoning and generalization.
 
-**Independence**: LLms can partially approximate independent mechanisms but still rely on a pre-trained shared mechanism at test time.
+**Independence**: LLMs can partially approximate independent mechanisms but still rely on a pre-trained shared mechanism at test time.
 
 ## Future Directions
 
-Our proposed model is an initial step towards building modular language models with independent executable functions following sparse and robust causal relationships. It currently emulates a single graph layer. We are currently exploring more complex structure combinations (such as trees and graphs) to improve the expressivity of the overall causal graph. We hope that it can lead to more efficient, modulable and interpretable AI model pipelines, on which atomic interventions can be performed to further improve their reasoning abilities.
+Our proposed model is an initial step towards building modular language models with independent executable functions following sparse and robust causal relationships. It currently emulates a single graph layer. We are currently exploring more complex structure combinations (such as trees and graphs) to improve the expressivity of the overall causal graph. We hope that it can lead to more efficient, modular and interpretable AI model pipelines, on which atomic interventions can be performed to further improve their reasoning abilities.

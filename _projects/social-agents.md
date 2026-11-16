@@ -50,13 +50,13 @@ This project focuses on modelling the behaviours of natural social agents (e.g. 
 
 ## Key Takeaways
 
-**Dataset** As part of this project, we collected a large dataset of annotated meerkat behaviours, which is the first of its kind. We released the [dataset](https://arxiv.org/abs/2306.11326) publicly.
+**Dataset**: As part of this project, we collected a large dataset of annotated meerkat behaviours, which is the first of its kind. We released the [dataset](https://arxiv.org/abs/2306.11326) publicly.
 
-**Causal Structure Discovery** We propose an interpretable method for modelling and predicting the behaviours of social agents using causal structure discovery and graph neural networks (technical details can be found in the paper). 
+**Causal Structure Discovery**: We propose an interpretable method for modelling and predicting the behaviours of social agents using causal structure discovery and graph neural networks (technical details can be found in the paper). 
 
-**Experiments** We apply our method over a group of meerkats from the Wellington zoo and show that our proposed pipeline competes with standard architectures while being more efficient and interpretable, outperforming them in low information settings.
+**Experiments**: We apply our method over a group of meerkats from the Wellington Zoo and show that our proposed pipeline competes with standard architectures while being more efficient and interpretable, outperforming them in low information settings.
 
-**Simulation** We also show that our method can be used to simulate the behaviours of social agents over time, yielding more realistic behavioural sequences than methods based only on neural networks.
+**Simulation**: We also show that our method can be used to simulate the behaviours of social agents over time, yielding more realistic behavioural sequences than methods based only on neural networks.
 
 <figure class="featured-image" markdown="0">
   <img src="/assets/projects/visualisation_meerkats_example.gif" 
@@ -68,4 +68,4 @@ This project focuses on modelling the behaviours of natural social agents (e.g. 
 
 ## Future Directions
 
-This work has any applications, ranging from animal welfare to robotics or the understanding of human social structures. We are currently expanding this work to other social agents and modelling dynamics as well as behaviours. We hope that this work can lead to interpretable and robust models able to simulate social agents in counterfactual settings, discover their underlying ethical principles, their reward functions, or predict dangerous patterns.
+This work has many applications, ranging from animal welfare to robotics or the understanding of human social structures. We are currently expanding this work to other social agents and modelling dynamics as well as behaviours. We hope that this work can lead to interpretable and robust models able to simulate social agents in counterfactual settings, discover their underlying ethical principles, their reward functions, or predict dangerous patterns.

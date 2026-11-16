@@ -20,7 +20,7 @@ featured: true
 ---
 
 ## Overview
-This project was the first attempt to evaluate large language models (LLMs) on a large variety of abstract reasoning tasks, including the [Abstract Reasoning Challenge (ARC-AGI)](https://arxiv.org/abs/1911.01547), [Raven's Progressive Matrices (RPM)](https://openaccess.thecvf.com/content_CVPR_2019/html/Zhang_RAVEN_A_Dataset_for_Relational_and_Analogical_Visual_REasoNing_CVPR_2019_paper.html), etc. We build a large benchmark of text-based abstract reasoning tasks, and evaluate the performance of LLMs on these tasks. We show that LLMs are not able to generalize to unseen reasoning chains, and fail to adapt to out-of-distribution settings.
+This project was the first attempt to evaluate large language models (LLMs) on a large variety of abstract reasoning tasks, including the [Abstraction and Reasoning Corpus (ARC-AGI)](https://arxiv.org/abs/1911.01547), [Raven's Progressive Matrices (RPM)](https://openaccess.thecvf.com/content_CVPR_2019/html/Zhang_RAVEN_A_Dataset_for_Relational_and_Analogical_Visual_REasoNing_CVPR_2019_paper.html), etc. We build a large benchmark of text-based abstract reasoning tasks, and evaluate the performance of LLMs on these tasks. We show that LLMs are not able to generalize to unseen reasoning chains, and fail to adapt to out-of-distribution settings.
 
 ## Key Takeaways
 
@@ -32,4 +32,4 @@ This project was the first attempt to evaluate large language models (LLMs) on a
 
 ## Future Directions 
 
-We show that LLMs are not able to generalize to unseen reasoning chains, and fail to adapt to out-of-distribution settings. This highlights the need for more robust and generalizable models for abstract reasoning tasks, problem that we tackled in our [other projects](/projects.html).
+We show that LLMs are not able to generalize to unseen reasoning chains, and fail to adapt to out-of-distribution settings. This highlights the need for more robust and generalizable models for abstract reasoning tasks, a problem that we tackled in our [other projects](/projects.html).

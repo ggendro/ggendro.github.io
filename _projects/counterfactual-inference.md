@@ -27,12 +27,12 @@ This project aims to build automatic systems able to parse texts for causal stru
 
 ## Key Takeaways
 
-**Causal Extraction**: We propose to alleviate limitations of LLMs to represent causal relationships by relying on existing causal knowledge and parse it using causal extraction.
+**Causal Extraction**: We propose to alleviate limitations of LLMs to represent causal relationships by relying on existing causal knowledge and parsing it using causal extraction.
 
 **Counterfactual Inference**: We use standard principles of abduction, intervention and prediction for rigorously computing counterfactuals and adapt them to the natural language domain.
 
-**Experiments**: We show that the main limitations for compting counterfactuals in natural language are the lack of causal knowledge and logical understanding as models can fail even when the right causal structure is given.
+**Experiments**: We show that the main limitations for computing counterfactuals in natural language are the lack of causal knowledge and logical understanding as models can fail even when the right causal structure is given.
 
 ## Future Directions
 
-The end goal of this project is to create systems that can reason about cause and effects and build causal graph-text equivalences, which can later be used to recover the underlying causal structure of natural language texts, detect patterns, recursively build complex causal structures and, following these causal constraints, convert them to long text sequences without hallucination. These structures could furthermore be used to intervene on the text and generate counterfactuals, which could be used for training models in out-of-distribution settings and yield better, robust and interpretable reasoners.
+The end goal of this project is to create systems that can reason about cause and effect and build causal graph-text equivalences, which can later be used to recover the underlying causal structure of natural language texts, detect patterns, recursively build complex causal structures and, following these causal constraints, convert them to long text sequences without hallucination. These structures could furthermore be used to intervene on the text and generate counterfactuals, which could be used for training models in out-of-distribution settings and yield better, robust and interpretable reasoners.
