@@ -20,6 +20,8 @@
     {% else %}
         <title>{{ site.data.profile.name }}</title>
     {% endif %}
+    {% seo title=false %}
+    {% if site.posts.size > 0 %}{% feed_meta %}{% endif %}
     
     <!-- Prevent flash of unstyled content when in dark mode -->
     <script>

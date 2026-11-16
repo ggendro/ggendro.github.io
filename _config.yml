@@ -8,7 +8,9 @@ markdown: kramdown
 theme: minima
 plugins:
   - jekyll-feed
-kramdown:  
+  - jekyll-seo-tag
+  - jekyll-sitemap # also generates robots.txt
+kramdown:
   parse_block_html: true
 
 # Collections
@@ -18,8 +20,26 @@ collections:
     sort_by: date
     permalink: /projects/:path/
 
+# Structured data (JSON-LD) for jekyll-seo-tag; keep in sync with social links in _data/profile.yml
+social:
+  name: Gaël Gendron
+  links:
+    - https://www.linkedin.com/in/gael-gendron/
+    - https://github.com/ggendro
+    - https://scholar.google.com/citations?user=ZW1IdHEAAAAJ
+
 # Default front matter
 defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      # Link-preview image (Open Graph / Twitter); square photo, hence the "summary" card
+      image:
+        path: /assets/profile.jpeg
+        alt: Picture of Gaël Gendron
+      twitter:
+        card: summary
   - scope:
       path: ""
       type: "posts"
