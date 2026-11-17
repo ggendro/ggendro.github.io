@@ -1,14 +1,797 @@
-/* MAIN CSS
+/* Site styles: one file, no @import.
+   Layout: translucent menu bar, profile column + reading column, sections without boxes, and a quiet
+   landscape band (Lake Wakatipu ridges, day or night) fixed at the bottom of the window. */
+
+
+/* FONT: Inter, self-hosted (SIL Open Font License, see /assets/fonts/OFL.txt).
+   Variable weight 400-700 + italic 400; basic Latin and extended Latin subsets (the browser only downloads
+   the extended set if the page uses one of its characters, e.g. the č and ž in co-author names).
    ========================================================================== */
 
-/* Import base styles */
-@import url('base.css');
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400 700;
+    font-display: swap;
+    src: url('../fonts/inter-latin.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
 
-/* Import component styles */
-@import url('components.css');
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400 700;
+    font-display: swap;
+    src: url('../fonts/inter-latin-ext.woff2') format('woff2');
+    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
 
-/* Import page-specific styles */
-@import url('pages/home.css');
-@import url('pages/projects.css');
-@import url('pages/blog.css');
-@import url('pages/about.css');
+@font-face {
+    font-family: 'Inter';
+    font-style: italic;
+    font-weight: 400;
+    font-display: swap;
+    src: url('../fonts/inter-italic-latin.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+    font-family: 'Inter';
+    font-style: italic;
+    font-weight: 400;
+    font-display: swap;
+    src: url('../fonts/inter-italic-latin-ext.woff2') format('woff2');
+    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+
+/* THEME
+   ========================================================================== */
+
+/* Palette "Lake Wakatipu" (day): lake navy, sky blue, lake teal, sand.
+   Every text colour meets WCAG AA (4.5:1) on the page, the sky and every colour of the landscape band. */
+:root {
+    --primary-color: #163a5f;     /* name, headings, menu */
+    --text-color: #1f2933;
+    --muted-color: #45525f;       /* dates, authors, venues, footer */
+    --link-color: #1a5c9e;
+    --accent-color: #09646d;      /* link hover, section labels, focus ring */
+    --background-color: #f6f4ef;
+    --card-bg-color: #fff;        /* mobile menu, photo ring, tags */
+    --border-color: #dfe5ea;
+    --menu-bg: rgba(246, 244, 239, 0.82);
+    --sky: linear-gradient(#dce9f5, #eef3f6 55%, #f6f4ef);
+    --band-image: url('/assets/ridges-day.svg');
+}
+
+/* Night: the same lake at night (moon above its reflection, inside the band) */
+[data-theme="dark"] {
+    --primary-color: #d6e6f5;
+    --text-color: #e4eaf0;
+    --muted-color: #a7b6c4;
+    --link-color: #7db9f2;
+    --accent-color: #5cc8cf;
+    --background-color: #0e1621;
+    --card-bg-color: #152230;
+    --border-color: #26374a;
+    --menu-bg: rgba(8, 15, 26, 0.8);
+    --sky: linear-gradient(#070e1a, #0b1420 60%, #0e1621);
+    --band-image: url('/assets/ridges-night.svg');
+    color-scheme: dark;
+}
+
+
+/* BASE
+   ========================================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    overflow-x: clip; /* full-width elements (100vw includes the scrollbar) must not cause sideways scrolling */
+    /* The band artwork is 10x wider than tall: its height is at least a tenth of the window width,
+       so on wide screens it is never cropped at the top (and never stretched). */
+    --band-height: max(min(16vh, 140px), 10vw);
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 1.0625rem; /* 17px by default; follows the visitor's browser font-size setting */
+    line-height: 1.65;
+    color: var(--text-color);
+    background: var(--background-color);
+    padding: 0 20px var(--band-height);
+}
+
+/* Sky over the whole window, ridges and lake fixed at the bottom (decorative layers behind the content) */
+body::before,
+body::after {
+    content: '';
+    position: fixed;
+    left: 0;
+    right: 0;
+    pointer-events: none;
+}
+
+body::before {
+    top: 0;
+    bottom: 0;
+    z-index: -2;
+    background: var(--sky);
+}
+
+body::after {
+    bottom: 0;
+    height: var(--band-height);
+    z-index: -1;
+    background: var(--band-image) 85% bottom / cover no-repeat;
+}
+
+h1, h2, h3 {
+    color: var(--primary-color);
+    line-height: 1.25;
+}
+
+a {
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Inline SVG icons (_includes/icon.html): sized like the text around them */
+.icon {
+    width: 1em;
+    height: 1em;
+    vertical-align: -0.125em;
+    flex-shrink: 0;
+}
+
+a:hover {
+    color: var(--accent-color);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+
+/* MENU BAR
+   ========================================================================== */
+
+.top-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: var(--menu-bg);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.nav-container {
+    max-width: 55em;
+    height: 58px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo a {
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--primary-color);
+}
+
+.logo a:hover {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.menu-items {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+
+.menu-items a {
+    display: block;
+    padding: 7px 11px;
+    border-radius: 6px;
+    color: var(--primary-color);
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.menu-items a:hover,
+.menu-items a.active {
+    background: rgba(127, 140, 160, 0.16);
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.social-icons {
+    display: flex;
+    margin-left: 6px;
+}
+
+.social-icons a {
+    font-size: 1.1rem;
+    padding: 7px 8px;
+}
+
+#theme-toggle,
+.mobile-menu-toggle {
+    border: none;
+    background: none;
+    color: var(--primary-color);
+    cursor: pointer;
+}
+
+#theme-toggle {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#theme-toggle:hover {
+    background: rgba(127, 140, 160, 0.18);
+}
+
+.mobile-menu-toggle {
+    display: none;
+    font-size: 1.35rem;
+    padding: 8px;
+}
+
+/* Menu button shows "menu" when closed and "close" when open */
+.mobile-menu-toggle[aria-expanded="true"] .icon-open,
+.mobile-menu-toggle:not([aria-expanded="true"]) .icon-close {
+    display: none;
+}
+
+/* Theme icons: the script shows the one matching the current theme */
+#theme-toggle-light,
+#theme-toggle-dark {
+    display: none;
+}
+
+/* Below 900px the menu collapses into a dropdown */
+@media (max-width: 900px) {
+    .mobile-menu-toggle {
+        display: block;
+    }
+
+    .menu-items {
+        position: absolute;
+        top: 58px;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        align-items: stretch;
+        background: var(--card-bg-color);
+        border-bottom: 1px solid var(--border-color);
+        max-height: 0;
+        overflow-y: auto; /* scrolls on short (landscape) phone screens */
+        visibility: hidden; /* keeps the collapsed links out of the keyboard tab order */
+        transition: max-height 0.4s ease, visibility 0s 0.4s;
+    }
+
+    .menu-items.expanded {
+        max-height: min(460px, calc(100vh - 58px));
+        visibility: visible;
+        transition: max-height 0.4s ease;
+    }
+
+    .menu-items a {
+        padding: 13px 22px;
+        border-radius: 0;
+    }
+
+    .social-icons {
+        margin: 0;
+        justify-content: center;
+    }
+
+    .theme-toggle-wrapper {
+        display: flex;
+        justify-content: center;
+        padding: 4px 0 10px;
+    }
+}
+
+
+/* PAGE LAYOUT: profile column + reading column (~70 characters per line)
+   ========================================================================== */
+
+.page {
+    max-width: 55em;
+    margin: 0 auto;
+    padding-top: 96px;
+}
+
+main {
+    max-width: 36em; /* ~68 characters per line, whatever the text size */
+}
+
+/* Other pages (blog, 404): a single column with the page title on top */
+body > header,
+body > main {
+    max-width: 36em;
+    margin: 0 auto;
+}
+
+body > header {
+    padding-top: 110px;
+    margin-bottom: 1.5rem;
+}
+
+body > header h1 {
+    font-size: 2rem;
+}
+
+@media (min-width: 1000px) {
+    .page {
+        display: grid;
+        grid-template-columns: 15rem 1fr;
+        gap: 4rem;
+        padding-top: 110px;
+    }
+
+    /* the profile stays in view while the content scrolls */
+    .sidebar {
+        position: sticky;
+        top: 100px;
+        align-self: start;
+    }
+
+    .sidebar .intro-links {
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    /* section labels land level with the top of the sticky profile */
+    section[id] {
+        scroll-margin-top: 100px;
+    }
+}
+
+@media (max-width: 999px) {
+    .page {
+        max-width: 38em;
+    }
+
+    .sidebar {
+        display: flex;
+        align-items: center;
+        gap: 22px;
+        margin-bottom: 1.5rem;
+    }
+}
+
+@media (max-width: 600px) {
+    body {
+        font-size: 1rem;
+    }
+
+    .page {
+        padding-top: 84px;
+    }
+
+    .sidebar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+    }
+}
+
+
+/* PROFILE
+   ========================================================================== */
+
+.profile-photo {
+    display: block;
+    flex-shrink: 0;
+    width: 168px;
+    height: 168px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--card-bg-color);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
+}
+
+.sidebar h1 {
+    font-size: 1.9rem;
+    font-weight: 700;
+    margin-top: 18px;
+}
+
+.sidebar .title {
+    color: var(--muted-color);
+    margin: 4px 0 14px;
+}
+
+.intro-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 18px;
+    font-size: 0.95rem;
+}
+
+.intro-links .icon {
+    margin-right: 4px;
+}
+
+@media (max-width: 999px) {
+    .profile-photo {
+        width: 120px;
+        height: 120px;
+    }
+
+    .sidebar h1 {
+        margin-top: 0;
+    }
+}
+
+
+/* SECTIONS
+   ========================================================================== */
+
+section {
+    margin: 4.5rem 0;
+}
+
+@media (max-width: 600px) {
+    section {
+        margin: 3.5rem 0;
+    }
+}
+
+.bio {
+    margin-top: 0;
+}
+
+/* Keep section labels visible below the fixed menu after an in-page jump */
+section[id] {
+    scroll-margin-top: 76px;
+}
+
+/* Section labels: small capitals in the accent colour, followed by a thin rule */
+h2 {
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent-color);
+    margin-bottom: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+h2::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border-color);
+}
+
+h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--muted-color);
+    margin-top: 1.8rem;
+}
+
+/* Spacing between consecutive blocks (the reset removes all margins) */
+.bio > * + *,
+.section-content > * + * {
+    margin-top: 0.9em;
+}
+
+.section-content > h3 {
+    margin-top: 1.8rem;
+}
+
+.section-content > h3 + * {
+    margin-top: 0.3rem;
+}
+
+.section-content ul {
+    padding-left: 1.2em;
+}
+
+/* Dated lists (news, awards, experience) and publications: no bullets */
+.section-content .dated-list,
+.section-content .publications {
+    list-style: none;
+    padding-left: 0;
+}
+
+.dated-list li {
+    display: grid;
+    grid-template-columns: 7.5rem 1fr;
+    gap: 16px;
+}
+
+.dated-list li + li {
+    margin-top: 8px;
+}
+
+.dated-list-date {
+    color: var(--muted-color);
+    font-size: 0.95em;
+    font-variant-numeric: tabular-nums;
+}
+
+.publication + .publication {
+    margin-top: 1rem;
+}
+
+.publication > div {
+    color: var(--muted-color);
+    font-size: 0.95em;
+}
+
+.publication-title {
+    font-weight: 600;
+    font-size: 1.02em;
+}
+
+.publication-tldr {
+    font-size: 0.95em;
+    margin-top: 2px;
+}
+
+.publication-note {
+    font-style: italic;
+}
+
+.publication-links {
+    display: flex;
+    gap: 14px;
+}
+
+.author-highlight {
+    color: var(--text-color);
+}
+
+@media (max-width: 600px) {
+    .dated-list li {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+}
+
+
+/* FOOTER
+   ========================================================================== */
+
+footer {
+    max-width: 55em;
+    margin: 3rem auto 0;
+    padding: 1.5rem 0 1rem;
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+    color: var(--muted-color);
+    font-size: 0.9rem;
+}
+
+
+/* BLOG AND POSTS (kept for future posts)
+   ========================================================================== */
+
+.blog-entry {
+    margin: 2rem 0;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.blog-entry:last-child {
+    border-bottom: none;
+}
+
+.blog-date,
+.post-meta {
+    color: var(--muted-color);
+    font-size: 0.9em;
+}
+
+/* post and blog titles are real headings, not section labels */
+.blog-entry h2,
+.post-content h2 {
+    display: block;
+    font-size: 1.35rem;
+    font-weight: 600;
+    letter-spacing: normal;
+    text-transform: none;
+    color: var(--primary-color);
+}
+
+.blog-entry h2::after,
+.post-content h2::after {
+    display: none;
+}
+
+.blog-entry h2 {
+    margin: 0.3rem 0 0.6rem;
+}
+
+.blog-excerpt,
+.blog-meta {
+    margin-bottom: 0.8rem;
+}
+
+.blog-tag,
+.tag {
+    display: inline-block;
+    padding: 2px 10px;
+    margin: 0 6px 6px 0;
+    border: 1px solid var(--border-color);
+    border-radius: 15px;
+    background: var(--card-bg-color);
+    font-size: 0.8em;
+}
+
+.read-more {
+    font-weight: 600;
+}
+
+.post {
+    max-width: 36em;
+    margin: 0 auto;
+    padding-top: 110px;
+}
+
+.post-header {
+    margin-bottom: 2rem;
+}
+
+.post-title {
+    font-size: 2rem;
+    margin-bottom: 0.6rem;
+}
+
+.post-meta,
+.post-date,
+.post-categories {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 20px;
+}
+
+.post-content {
+    line-height: 1.75;
+}
+
+.post-content h2,
+.post-content h3 {
+    margin: 2rem 0 0.8rem;
+}
+
+.post-content h3 {
+    font-size: 1.15rem;
+    color: var(--primary-color);
+}
+
+.post-content p,
+.post-content ul,
+.post-content ol {
+    margin-bottom: 1.2rem;
+}
+
+.post-content ul,
+.post-content ol {
+    margin-left: 1.4rem;
+}
+
+.post-tags {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin-top: 2.5rem;
+}
+
+.navigation-container {
+    max-width: 36em;
+    margin: 2rem auto 0;
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.prev-post,
+.next-post {
+    max-width: 45%;
+}
+
+
+/* PHOTO PAGE (/wakatipu/): wider column so the photo can breathe
+   ========================================================================== */
+
+body > .wide {
+    max-width: 55em;
+}
+
+/* map-pin link next to the photo page title */
+.map-link {
+    font-size: 0.75em;
+    margin-left: 0.2em;
+}
+
+.map-link .icon {
+    vertical-align: -0.05em;
+}
+
+/* The photo spans the whole window (edge to edge); title, caption and text stay in the page column.
+   Whole photo shown, never cropped: on very wide windows it can be taller than the screen. */
+.photo img {
+    display: block;
+    width: 100vw;
+    max-width: none;
+    margin-left: calc(50% - 50vw);
+}
+
+.photo figcaption {
+    margin-top: 0.6rem;
+    color: var(--muted-color);
+    font-size: 0.9em;
+}
+
+.photo + p {
+    margin-top: 1.5rem;
+}
+
+body > main.wide > p {
+    max-width: 36em; /* keep the text at reading width under the wide photo */
+}
+
+body > main.wide > p + p {
+    margin-top: 1rem;
+}
+
+
+/* ACCESSIBILITY
+   ========================================================================== */
+
+/* Visible keyboard focus (mouse clicks don't show it) */
+a:focus-visible,
+button:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+    border-radius: 3px;
+}
+
+.menu-items :focus-visible {
+    outline-offset: -2px; /* the mobile menu clips anything drawn outside it */
+}
+
+/* Glide to sections from the menu, unless the visitor asked for reduced motion */
+@media (prefers-reduced-motion: no-preference) {
+    html {
+        scroll-behavior: smooth;
+    }
+}
+
+/* Visitors who ask their OS to reduce motion get instant changes instead of animations */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        transition-duration: 0.01ms !important;
+        transition-delay: 0s !important;
+        animation-duration: 0.01ms !important;
+    }
+}

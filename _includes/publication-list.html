@@ -1,0 +1,16 @@
+{% comment %}Renders a list of entries from _data/publications.yml. Usage: {% include publication-list.html items=... %}{% endcomment %}
+<ul class="publications">
+    {% for pub in include.items %}
+    <li class="publication">
+        <a href="{{ pub.url }}" class="publication-title" target="_blank" rel="noopener noreferrer">{{ pub.title }}</a>
+        <div>{% for author in pub.authors %}{% if author contains "Gendron" %}<strong class="author-highlight">{{ author }}</strong>{% else %}{{ author }}{% endif %}{% unless forloop.last %}, {% endunless %}{% endfor %}</div>
+        <div><strong>{{ pub.venue }}</strong>{% if pub.venue_full %} &middot; <em>{{ pub.venue_full }}</em>{% endif %}</div>
+        {% if pub.tldr %}<p class="publication-tldr">{{ pub.tldr }}</p>{% endif %}
+        {% if pub.note %}<div class="publication-note">{{ pub.note }}</div>{% endif %}
+        <div class="publication-links">
+            <a href="{{ pub.url }}" target="_blank" rel="noopener noreferrer">{% include icon.html name="file-text" %} Paper</a>
+            {% if pub.code %}<a href="{{ pub.code }}" target="_blank" rel="noopener noreferrer">{% include icon.html name="github" %} Code</a>{% endif %}
+        </div>
+    </li>
+    {% endfor %}
+</ul>

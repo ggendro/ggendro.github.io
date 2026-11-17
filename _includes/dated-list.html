@@ -1,0 +1,6 @@
+{% comment %}Renders a list of {date, text} items (text is Markdown). Usage: {% include dated-list.html items=site.data.news %}{% endcomment %}
+<ul class="dated-list">
+    {% for item in include.items %}
+    <li><span class="dated-list-date">{{ item.date }}</span><span>{{ item.text | markdownify | remove: '<p>' | remove: '</p>' | strip }}</span></li>
+    {% endfor %}
+</ul>

@@ -1,8 +1,8 @@
-﻿# Page Titles
+# Page Titles
 home: Homepage
-projects: Research
 blog: Blog
-about: About
+wakatipu: Lake Wakatipu
+"404": Page not found # quoted: looked up by page name, which is a string
 
 # Title Format
 format: "%name% - %title%"

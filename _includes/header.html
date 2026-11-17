@@ -1,44 +1,38 @@
-<nav class="top-menu">
+<nav class="top-menu" aria-label="Main">
     <div class="nav-container">
         <div class="logo">
             <a href="{{ '/' | relative_url }}">{{ site.data.profile.name }}</a>
         </div>
-        <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
-            <i class="fas fa-bars"></i>
+        <button class="mobile-menu-toggle" aria-label="Toggle mobile menu" aria-controls="menu-items" aria-expanded="false">
+            {% include icon.html name="menu" class="icon-open" %}{% include icon.html name="x" class="icon-close" %}
         </button>
-        <ul class="menu-items">
-            <!-- Always show Home menu item -->
-            <li><a href="/index.html" {% if page.url == "/" or page.url == "/index.html" %}class="active"{% endif %}>Home</a></li>
-            
-            <!-- Only show Projects menu item if there are projects -->
-            {% assign project_count = site.projects | size %}
-            {% if project_count > 0 %}
-            <li><a href="/projects.html" {% if page.url == "/projects.html" or page.url contains "/projects/" %}class="active"{% endif %}>Research</a></li>
-            {% endif %}
-            
+        <ul class="menu-items" id="menu-items">
+            <!-- Sections of the home page; absolute so they also work from blog posts and the 404 page -->
+            <li><a href="{{ '/#news' | relative_url }}">News</a></li>
+            <li><a href="{{ '/#experience' | relative_url }}">Experience</a></li>
+            <li><a href="{{ '/#awards' | relative_url }}">Awards</a></li>
+            <li><a href="{{ '/#research' | relative_url }}">Research</a></li>
+
             <!-- Only show Blog menu item if there are blog posts -->
             {% assign post_count = site.posts | size %}
             {% if post_count > 0 %}
-            <li><a href="/blog.html" {% if page.url == "/blog.html" or page.url contains "/blog/" or page.url contains "/posts/" %}class="active"{% endif %}>Blog</a></li>
+            <li><a href="{{ '/blog.html' | relative_url }}" {% if page.url == "/blog.html" or page.url contains "/blog/" or page.url contains "/posts/" %}class="active"{% endif %}>Blog</a></li>
             {% endif %}
-            
-            <!-- Always show About menu item -->
-            <li><a href="/about.html" {% if page.url == "/about.html" %}class="active"{% endif %}>About</a></li>
-            
-            <li><a href="{{ site.data.profile.cv.path | relative_url }}" target="_blank">{{ site.data.profile.cv.label }}</a></li>
+
+            <li><a href="{{ site.data.profile.cv.path | relative_url }}" target="_blank" rel="noopener noreferrer">{{ site.data.profile.cv.label }}</a></li>
             <li class="social-icons">
                 {% for social in site.data.profile.social %}
                 {% assign key = social[0] %}
                 {% assign value = social[1] %}
-                <a href="{{ value.url }}" target="_blank" aria-label="{{ value.label }}">
-                    <i class="{{ value.icon }}"></i>
+                <a href="{{ value.url }}" target="_blank" rel="noopener noreferrer" aria-label="{{ value.label }}">
+                    {% include icon.html name=value.icon %}
                 </a>
                 {% endfor %}
             </li>
             <li class="theme-toggle-wrapper">
                 <button id="theme-toggle" aria-label="Toggle dark mode">
-                    <i class="fas fa-sun" id="theme-toggle-light" style="display: none;"></i>
-                    <i class="fas fa-moon" id="theme-toggle-dark" style="display: none;"></i>
+                    {% include icon.html name="sun" id="theme-toggle-light" %}
+                    {% include icon.html name="moon" id="theme-toggle-dark" %}
                 </button>
             </li>
         </ul>
