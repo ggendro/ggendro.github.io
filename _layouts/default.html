@@ -70,10 +70,8 @@
     </script>
     
     <link rel="stylesheet" type="text/css" href="{{ '/assets/css/main.css' | relative_url }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:,"> <!-- no favicon for now; stops browsers requesting /favicon.ico (a 404) -->
+    <link rel="preload" href="{{ '/assets/fonts/inter-latin.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Dark mode toggle functionality
@@ -120,13 +118,10 @@
             const menuItems = document.querySelector('.menu-items');
             
             if (mobileMenuToggle) {
-                const menuIcon = mobileMenuToggle.querySelector('i');
-
-                // Open or close the mobile menu, keeping icon and aria state in sync
+                // Open or close the mobile menu (the CSS shows the matching icon from aria-expanded)
                 function setMenuOpen(open) {
                     menuItems.classList.toggle('expanded', open);
                     mobileMenuToggle.setAttribute('aria-expanded', open);
-                    menuIcon.classList.replace(open ? 'fa-bars' : 'fa-times', open ? 'fa-times' : 'fa-bars');
                 }
 
                 mobileMenuToggle.addEventListener('click', function() {

@@ -7,12 +7,12 @@ layout: default
             <h1 class="post-title">{{ page.title }}</h1>
             <div class="post-meta">
                 <span class="post-date">
-                    <i class="far fa-calendar-alt"></i> {{ page.date | date: "%B %d, %Y" }}
+                    {% include icon.html name="calendar" %} {{ page.date | date: "%B %d, %Y" }}
                 </span>
             
                 {% if page.categories %}
                 <span class="post-categories">
-                    <i class="fas fa-folder"></i>
+                    {% include icon.html name="folder" %}
                     {% for category in page.categories %}
                     <span class="category">{{ category }}</span>
                     {% endfor %}
@@ -33,7 +33,7 @@ layout: default
 
         {% if page.tags %}
         <div class="post-tags">
-            <i class="fas fa-tags"></i>
+            {% include icon.html name="tag" %}
             {% for tag in page.tags %}
             <span class="tag">{{ tag }}</span>
             {% endfor %}
@@ -45,7 +45,7 @@ layout: default
         <div class="navigation-container">
             {% if page.previous.url %}
             <a class="prev-post" href="{{ page.previous.url }}">
-                <i class="fas fa-arrow-left"></i> 
+                {% include icon.html name="arrow-left" %} 
                 <span class="nav-title">{{ page.previous.title }}</span>
             </a>
             {% endif %}
@@ -53,7 +53,7 @@ layout: default
             {% if page.next.url %}
             <a class="next-post" href="{{ page.next.url }}">
                 <span class="nav-title">{{ page.next.title }}</span> 
-                <i class="fas fa-arrow-right"></i>
+                {% include icon.html name="arrow-right" %}
             </a>
             {% endif %}
         </div>

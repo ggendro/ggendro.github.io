@@ -8,8 +8,8 @@
         {% if pub.tldr %}<p class="publication-tldr">{{ pub.tldr }}</p>{% endif %}
         {% if pub.note %}<div class="publication-note">{{ pub.note }}</div>{% endif %}
         <div class="publication-links">
-            <a href="{{ pub.url }}" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-alt" aria-hidden="true"></i> Paper</a>
-            {% if pub.code %}<a href="{{ pub.code }}" target="_blank" rel="noopener noreferrer"><i class="fab fa-github" aria-hidden="true"></i> Code</a>{% endif %}
+            <a href="{{ pub.url }}" target="_blank" rel="noopener noreferrer">{% include icon.html name="file-text" %} Paper</a>
+            {% if pub.code %}<a href="{{ pub.code }}" target="_blank" rel="noopener noreferrer">{% include icon.html name="github" %} Code</a>{% endif %}
         </div>
     </li>
     {% endfor %}

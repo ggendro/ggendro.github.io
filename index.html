@@ -17,15 +17,16 @@ redirect_from: # pages merged into this one
 <div class="page">
     <!-- Profile: a column that stays in view on wide screens -->
     <header class="sidebar">
-        <img class="profile-photo" src="{{ profile.profile_photo | relative_url }}" alt="Photo of {{ profile.name }}">
+        <img class="profile-photo" src="{{ profile.profile_photo | relative_url }}" alt="Photo of {{ profile.name }}" width="400" height="400">
         <div>
             <h1>{{ profile.name }}</h1>
             <p class="title">{{ profile.title }}</p>
             <p class="intro-links">
-                <a href="mailto:{{ profile.email }}"><i class="fas fa-envelope" aria-hidden="true"></i> {{ profile.email }}</a>
-                <a href="{{ profile.cv.path | relative_url }}" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-pdf" aria-hidden="true"></i> {{ profile.cv.label }}</a>
+                <a href="mailto:{{ profile.email }}">{% include icon.html name="mail" %} {{ profile.email }}</a>
+                <a href="{{ profile.cv.path | relative_url }}" target="_blank" rel="noopener noreferrer">{% include icon.html name="file-text" %} {{ profile.cv.label }}</a>
                 {% for social in profile.social %}
-                <a href="{{ social[1].url }}" target="_blank" rel="noopener noreferrer"><i class="{{ social[1].icon }}" aria-hidden="true"></i> {{ social[1].label }}</a>
+                {% assign link = social[1] %}
+                <a href="{{ link.url }}" target="_blank" rel="noopener noreferrer">{% include icon.html name=link.icon %} {{ link.label }}</a>
                 {% endfor %}
             </p>
         </div>

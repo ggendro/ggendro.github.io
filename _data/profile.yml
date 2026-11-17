@@ -72,12 +72,12 @@ social:
   linkedin:
     url: https://www.linkedin.com/in/gael-gendron/
     label: LinkedIn
-    icon: fab fa-linkedin
+    icon: linkedin
   github:
     url: https://github.com/ggendro
     label: GitHub
-    icon: fab fa-github
+    icon: github
   scholar:
     url: https://scholar.google.com/citations?user=ZW1IdHEAAAAJ
     label: Google Scholar
-    icon: fas fa-graduation-cap
+    icon: googlescholar

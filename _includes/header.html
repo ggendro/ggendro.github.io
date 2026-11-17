@@ -4,7 +4,7 @@
             <a href="{{ '/' | relative_url }}">{{ site.data.profile.name }}</a>
         </div>
         <button class="mobile-menu-toggle" aria-label="Toggle mobile menu" aria-controls="menu-items" aria-expanded="false">
-            <i class="fas fa-bars" aria-hidden="true"></i>
+            {% include icon.html name="menu" class="icon-open" %}{% include icon.html name="x" class="icon-close" %}
         </button>
         <ul class="menu-items" id="menu-items">
             <!-- Sections of the home page; absolute so they also work from blog posts and the 404 page -->
@@ -25,14 +25,14 @@
                 {% assign key = social[0] %}
                 {% assign value = social[1] %}
                 <a href="{{ value.url }}" target="_blank" rel="noopener noreferrer" aria-label="{{ value.label }}">
-                    <i class="{{ value.icon }}" aria-hidden="true"></i>
+                    {% include icon.html name=value.icon %}
                 </a>
                 {% endfor %}
             </li>
             <li class="theme-toggle-wrapper">
                 <button id="theme-toggle" aria-label="Toggle dark mode">
-                    <i class="fas fa-sun" id="theme-toggle-light" style="display: none;" aria-hidden="true"></i>
-                    <i class="fas fa-moon" id="theme-toggle-dark" style="display: none;" aria-hidden="true"></i>
+                    {% include icon.html name="sun" id="theme-toggle-light" %}
+                    {% include icon.html name="moon" id="theme-toggle-dark" %}
                 </button>
             </li>
         </ul>
