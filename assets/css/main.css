@@ -91,6 +91,7 @@
 }
 
 body {
+    overflow-x: clip; /* full-width elements (100vw includes the scrollbar) must not cause sideways scrolling */
     /* The band artwork is 10x wider than tall: its height is at least a tenth of the window width,
        so on wide screens it is never cropped at the top (and never stretched). */
     --band-height: max(min(16vh, 140px), 10vw);
@@ -714,6 +715,51 @@ footer {
 .prev-post,
 .next-post {
     max-width: 45%;
+}
+
+
+/* PHOTO PAGE (/wakatipu/): wider column so the photo can breathe
+   ========================================================================== */
+
+body > .wide {
+    max-width: 55em;
+}
+
+/* map-pin link next to the photo page title */
+.map-link {
+    font-size: 0.75em;
+    margin-left: 0.2em;
+}
+
+.map-link .icon {
+    vertical-align: -0.05em;
+}
+
+/* The photo spans the whole window (edge to edge); title, caption and text stay in the page column.
+   Whole photo shown, never cropped: on very wide windows it can be taller than the screen. */
+.photo img {
+    display: block;
+    width: 100vw;
+    max-width: none;
+    margin-left: calc(50% - 50vw);
+}
+
+.photo figcaption {
+    margin-top: 0.6rem;
+    color: var(--muted-color);
+    font-size: 0.9em;
+}
+
+.photo + p {
+    margin-top: 1.5rem;
+}
+
+body > main.wide > p {
+    max-width: 36em; /* keep the text at reading width under the wide photo */
+}
+
+body > main.wide > p + p {
+    margin-top: 1rem;
 }
 
 

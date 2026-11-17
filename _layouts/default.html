@@ -11,12 +11,14 @@
         {% assign page_key = page_name %}
     {% endif %}
     
-    {% if page.title %}
-        <title>{{ page.title }}</title>
-    {% elsif site.data.titles[page_key] %}
+    {% comment %}Pages listed in _data/titles.yml get the "Name - Title" format (even if they also set a
+    `title`, which jekyll-seo-tag then uses for link previews); posts use their own title.{% endcomment %}
+    {% if site.data.titles[page_key] %}
         {% assign title_format = site.data.titles.format %}
         {% assign formatted_title = title_format | replace: "%title%", site.data.titles[page_key] | replace: "%name%", site.data.profile.name %}
         <title>{{ formatted_title }}</title>
+    {% elsif page.title %}
+        <title>{{ page.title }}</title>
     {% else %}
         <title>{{ site.data.profile.name }}</title>
     {% endif %}

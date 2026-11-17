@@ -1,6 +1,7 @@
 # Page Titles
 home: Homepage
 blog: Blog
+wakatipu: Lake Wakatipu
 "404": Page not found # quoted: looked up by page name, which is a string
 
 # Title Format

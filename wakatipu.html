@@ -1,0 +1,31 @@
+---
+layout: default
+title: Lake Wakatipu # used by link previews; the browser tab uses _data/titles.yml
+permalink: /wakatipu/
+sitemap: false # discreet page, reached from the footer credit
+description: The photo of Lake Wakatipu, New Zealand, that inspired the landscape drawn at the bottom of this website.
+image: # link preview: the lake photo, as a wide card (overrides the profile photo default)
+  path: /assets/wakatipu-1000.jpg
+  alt: Lake Wakatipu, New Zealand
+twitter:
+  card: summary_large_image
+---
+
+<header class="wide">
+    <h1>Lake Wakatipu, New Zealand (2024)
+        <a class="map-link" href="https://maps.app.goo.gl/12gymYJojoJ1ee52A" target="_blank" rel="noopener noreferrer" aria-label="Lake Wakatipu on Google Maps" title="See on Google Maps">{% include icon.html name="map-pin" %}</a>
+    </h1>
+</header>
+
+<main class="wide">
+    <figure class="photo">
+        <img src="{{ '/assets/wakatipu-1000.jpg' | relative_url }}"
+             srcset="{{ '/assets/wakatipu-1000.jpg' | relative_url }} 1000w, {{ '/assets/wakatipu-1800.jpg' | relative_url }} 1800w, {{ '/assets/wakatipu-2400.jpg' | relative_url }} 2400w, {{ '/assets/wakatipu-3200.jpg' | relative_url }} 3200w, {{ '/assets/wakatipu-4096.jpg' | relative_url }} 4096w"
+             sizes="100vw"
+             width="1000" height="563"
+             alt="Lake Wakatipu: a turquoise lake between steep mountain ridges that close in towards the horizon, under a blue sky with clouds, seen from a pebble beach.">
+        <figcaption>Lake Wakatipu, the longest lake of New Zealand and one of the most beautiful places I've been to in the world. Photo taken by myself in 2024. Original image used as inspiration for drawing the lake and mountains in the background of this website.</figcaption>
+    </figure>
+
+    <p><a href="{{ '/' | relative_url }}">Back to homepage</a></p>
+</main>
