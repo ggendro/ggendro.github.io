@@ -1,0 +1,35 @@
+# Builds the site the way GitHub Pages does (same pinned github-pages gem) and checks that every internal
+# link, anchor, image (including alt text) and script resolves. External links are not checked here: several
+# sites (ACM Digital Library, LinkedIn) block automated checkers, which would make the check fail for no
+# reason. See the README for an occasional manual check of external links.
+# This workflow only checks; deployment is still done by GitHub Pages' own build.
+name: Check site
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'  # same Ruby as GitHub Pages
+          bundler-cache: true  # installs the gems from Gemfile.lock and caches them between runs
+
+      - name: Build
+        run: bundle exec jekyll build
+        env:
+          JEKYLL_ENV: production
+
+      - name: Check internal links, images and scripts
+        run: |
+          gem install html-proofer --version '~> 5.0' --no-document
+          htmlproofer ./_site --disable-external

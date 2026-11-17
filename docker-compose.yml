@@ -1,16 +1,20 @@
-version: '3.8'
+# Local preview without installing Ruby: `docker compose up`, then open http://localhost:4000
+# The official Ruby image (same Ruby as GitHub Pages) only provides Ruby and build tools; the site's own Jekyll
+# version comes from Gemfile.lock, hence `bundle exec`. Gems are cached in ./vendor/bundle (git-ignored).
+# Note: on Linux the generated files (_site/, .jekyll-cache/) are owned by root; on ARM machines (e.g. Apple
+# silicon) the first `bundle install` adds the ARM platform to Gemfile.lock.
 services:
   jekyll:
-      image: jekyll/jekyll:latest
-      command: >
-        bash -c "bundle install && 
-        jekyll serve --force_polling --livereload --host 0.0.0.0"
-      ports:
-          - 4000:4000
-          - 35729:35729
-      volumes:
-          - .:/srv/jekyll
-          - ./vendor/bundle:/usr/local/bundle
-      environment:
-          - JEKYLL_ENV=development
-      restart: unless-stopped
+    image: ruby:3.3
+    working_dir: /srv/jekyll
+    command: >
+      bash -c "bundle install &&
+      bundle exec jekyll serve --force_polling --livereload --host 0.0.0.0"
+    ports:
+      - 4000:4000
+      - 35729:35729
+    volumes:
+      - .:/srv/jekyll
+      - ./vendor/bundle:/usr/local/bundle
+    environment:
+      - JEKYLL_ENV=development
