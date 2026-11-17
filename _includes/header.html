@@ -9,9 +9,9 @@
         <ul class="menu-items" id="menu-items">
             <!-- Sections of the home page; absolute so they also work from blog posts and the 404 page -->
             <li><a href="{{ '/#news' | relative_url }}">News</a></li>
-            <li><a href="{{ '/#research' | relative_url }}">Research</a></li>
-            <li><a href="{{ '/#awards' | relative_url }}">Awards</a></li>
             <li><a href="{{ '/#experience' | relative_url }}">Experience</a></li>
+            <li><a href="{{ '/#awards' | relative_url }}">Awards</a></li>
+            <li><a href="{{ '/#research' | relative_url }}">Research</a></li>
 
             <!-- Only show Blog menu item if there are blog posts -->
             {% assign post_count = site.posts | size %}

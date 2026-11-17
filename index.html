@@ -14,18 +14,13 @@ redirect_from: # pages merged into this one
 ---
 {% assign profile = site.data.profile %}
 
-<header>
-    <h1>{{ profile.name }}</h1>
-    <p class="title">{{ profile.title }}</p>
-</header>
-
-<main>
-    <section class="profile-intro-section" aria-label="About">
-        <div class="profile-image">
-            <img src="{{ profile.profile_photo | relative_url }}" alt="Photo of {{ profile.name }}">
-        </div>
-        <div class="intro">
-            {{ profile.short_bio | markdownify }}
+<div class="page">
+    <!-- Profile: a column that stays in view on wide screens -->
+    <header class="sidebar">
+        <img class="profile-photo" src="{{ profile.profile_photo | relative_url }}" alt="Photo of {{ profile.name }}">
+        <div>
+            <h1>{{ profile.name }}</h1>
+            <p class="title">{{ profile.title }}</p>
             <p class="intro-links">
                 <a href="mailto:{{ profile.email }}"><i class="fas fa-envelope" aria-hidden="true"></i> {{ profile.email }}</a>
                 <a href="{{ profile.cv.path | relative_url }}" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-pdf" aria-hidden="true"></i> {{ profile.cv.label }}</a>
@@ -33,61 +28,67 @@ redirect_from: # pages merged into this one
                 <a href="{{ social[1].url }}" target="_blank" rel="noopener noreferrer"><i class="{{ social[1].icon }}" aria-hidden="true"></i> {{ social[1].label }}</a>
                 {% endfor %}
             </p>
+        </div>
+    </header>
+
+    <main>
+        <section class="bio" aria-label="About">
+            {{ profile.short_bio | markdownify }}
             <p>Feel free to reach out for research collaborations or discussions.</p>
-        </div>
-    </section>
+        </section>
 
-    {% if site.data.news.size > 0 %}
-    <section id="news" class="balanced-section">
-        <h2>News</h2>
-        <div class="section-content">
-            {% include dated-list.html items=site.data.news %}
-        </div>
-    </section>
-    {% endif %}
+        {% if site.data.news.size > 0 %}
+        <section id="news">
+            <h2>News</h2>
+            <div class="section-content">
+                {% include dated-list.html items=site.data.news %}
+            </div>
+        </section>
+        {% endif %}
 
-    <section id="research" class="balanced-section">
-        <h2>Research</h2>
-        <div class="section-content">
-            {{ profile.research_intro | markdownify }}
-            {% comment %}Papers with a `tldr` are the ones closest to my own line of work{% endcomment %}
-            {% assign selected = site.data.publications | where_exp: "pub", "pub.tldr" %}
-            {% assign others = site.data.publications | where_exp: "pub", "pub.tldr == nil" %}
-            <h3>Selected publications</h3>
-            {% include publication-list.html items=selected %}
-            <h3>Other publications</h3>
-            {% include publication-list.html items=others %}
-            {{ profile.contributions | markdownify }}
-            <p>See the complete list on <a href="{{ profile.social.scholar.url }}" target="_blank" rel="noopener noreferrer">Google Scholar</a>.</p>
-        </div>
-    </section>
+        <section id="experience">
+            <h2>Experience &amp; Education</h2>
+            <div class="section-content">
+                {% include dated-list.html items=profile.experience %}
+                {{ profile.reviewing | markdownify }}
+            </div>
+        </section>
 
-    <section id="awards" class="balanced-section">
-        <h2>Awards &amp; Talks</h2>
-        <div class="section-content">
-            {% include dated-list.html items=profile.awards %}
-        </div>
-    </section>
+        <section id="awards">
+            <h2>Awards &amp; Talks</h2>
+            <div class="section-content">
+                {% include dated-list.html items=profile.awards %}
+            </div>
+        </section>
 
-    <section id="experience" class="balanced-section">
-        <h2>Experience &amp; Education</h2>
-        <div class="section-content">
-            {% include dated-list.html items=profile.experience %}
-            {{ profile.reviewing | markdownify }}
-        </div>
-    </section>
+        <section id="research">
+            <h2>Research</h2>
+            <div class="section-content">
+                {{ profile.research_intro | markdownify }}
+                {% comment %}Papers with a `tldr` are the ones closest to my own line of work{% endcomment %}
+                {% assign selected = site.data.publications | where_exp: "pub", "pub.tldr" %}
+                {% assign others = site.data.publications | where_exp: "pub", "pub.tldr == nil" %}
+                <h3>Selected publications</h3>
+                {% include publication-list.html items=selected %}
+                <h3>Other publications</h3>
+                {% include publication-list.html items=others %}
+                {{ profile.contributions | markdownify }}
+                <p>See the complete list on <a href="{{ profile.social.scholar.url }}" target="_blank" rel="noopener noreferrer">Google Scholar</a>.</p>
+            </div>
+        </section>
 
-    {% if site.posts.size > 0 %}
-    <section id="blog" class="balanced-section">
-        <h2>Latest Blog Posts</h2>
-        <div class="section-content">
-            <ul>
-                {% for post in site.posts limit:3 %}
-                <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a> ({{ post.date | date: "%b %Y" }})</li>
-                {% endfor %}
-            </ul>
-            <p><a href="{{ '/blog.html' | relative_url }}">All posts</a></p>
-        </div>
-    </section>
-    {% endif %}
-</main>
+        {% if site.posts.size > 0 %}
+        <section id="blog">
+            <h2>Latest Blog Posts</h2>
+            <div class="section-content">
+                <ul>
+                    {% for post in site.posts limit:3 %}
+                    <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a> ({{ post.date | date: "%b %Y" }})</li>
+                    {% endfor %}
+                </ul>
+                <p><a href="{{ '/blog.html' | relative_url }}">All posts</a></p>
+            </div>
+        </section>
+        {% endif %}
+    </main>
+</div>
