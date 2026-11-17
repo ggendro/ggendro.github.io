@@ -13,15 +13,11 @@ plugins:
   - jekyll-feed
   - jekyll-seo-tag
   - jekyll-sitemap # also generates robots.txt
+  - jekyll-redirect-from # old /about.html and /projects/... URLs redirect to the home page (see index.html)
 kramdown:
   parse_block_html: true
-
-# Collections
-collections:
-  projects:
-    output: true
-    sort_by: date
-    permalink: /projects/:path/
+redirect_from:
+  json: false # don't publish /redirects.json
 
 # Structured data (JSON-LD) for jekyll-seo-tag; keep in sync with social links in _data/profile.yml
 social:
@@ -48,11 +44,6 @@ defaults:
       type: "posts"
     values:
       layout: "post"
-  - scope:
-      path: ""
-      type: "projects"
-    values:
-      layout: "project"
   
 # Exclude from processing
 exclude:
@@ -70,5 +61,4 @@ exclude:
   - docker-compose.yml
   - LICENSE
   - _posts/2020-01-01-post-example.md
-  - _projects/project-example.md
   - env

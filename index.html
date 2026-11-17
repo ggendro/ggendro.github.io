@@ -2,130 +2,92 @@
 layout: default
 seo:
   type: Person # structured data describes the site owner (see `social` in _config.yml)
+redirect_from: # pages merged into this one
+  - /about.html
+  - /projects.html
+  - /projects/abstract-reasoning/
+  - /projects/causal-cartographer/
+  - /projects/counterfactual-inference/
+  - /projects/disentanglement/
+  - /projects/iclm/
+  - /projects/social-agents/
 ---
+{% assign profile = site.data.profile %}
 
 <header>
-    <h1>{{ site.data.profile.name }}</h1>
-    <p class="title">{{ site.data.profile.title }}</p>
-    <div class="subtitle-container">
-        <p class="subtitle">{{ site.data.profile.subtitle }}</p>
-    </div>
+    <h1>{{ profile.name }}</h1>
+    <p class="title">{{ profile.title }}</p>
 </header>
 
-<main class="with-bg-pattern">
-    <section class="profile-intro-section">
+<main>
+    <section class="profile-intro-section" aria-label="About">
         <div class="profile-image">
-            <img src="{{ site.data.profile.profile_photo }}" alt="Profile">
+            <img src="{{ profile.profile_photo | relative_url }}" alt="Photo of {{ profile.name }}">
         </div>
         <div class="intro">
-            <p>{{ site.data.profile.short_bio | markdownify }}</p>
+            {{ profile.short_bio | markdownify }}
+            <p class="intro-links">
+                <a href="mailto:{{ profile.email }}"><i class="fas fa-envelope" aria-hidden="true"></i> {{ profile.email }}</a>
+                <a href="{{ profile.cv.path | relative_url }}" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-pdf" aria-hidden="true"></i> {{ profile.cv.label }}</a>
+                {% for social in profile.social %}
+                <a href="{{ social[1].url }}" target="_blank" rel="noopener noreferrer"><i class="{{ social[1].icon }}" aria-hidden="true"></i> {{ social[1].label }}</a>
+                {% endfor %}
+            </p>
+            <p>Feel free to reach out for research collaborations or discussions.</p>
         </div>
     </section>
-    
-    {% assign featured_projects = site.projects | where: "featured", true | sort: 'date' | reverse %}
-    {% assign project_count = featured_projects | size %}
-    {% if project_count > 0 %}
-    <section class="projects">
-        <h2>Latest Research</h2>
-        <div class="project-cards">
-            {% for project in featured_projects limit:5 %}
-                <div class="project-card">
-                    {% if project.thumbnail %}
-                    <div class="project-image">
-                        <img src="{{ project.thumbnail }}" alt="{{ project.title }}">
-                    </div>
-                    {% endif %}
-                    <div class="project-content">
-                        <h3><a href="{{ project.url | relative_url }}" class="site-link">{{ project.title }}</a></h3>
-                        
-                        {% if project.authors %}
-                        <div class="project-authors">
-                            <i class="fas fa-users"></i> 
-                            <span>
-                            {% for author in project.authors %}
-                                {% if author == site.data.profile.name %}
-                                    <span class="author-highlight">{{ author }}</span>{% unless forloop.last %}, {% endunless %}
-                                {% else %}
-                                    {{ author }}{% unless forloop.last %}, {% endunless %}
-                                {% endif %}
-                            {% endfor %}
-                            </span>
-                        </div>
-                        {% endif %}
-                        
-                        <p>{{ project.excerpt | strip_html | truncatewords: 45 }}</p>
-                        
-                        <div class="project-tech">
-                            {% for tech in project.technologies %}
-                            <span class="tech-tag">{{ tech }}</span>
-                            {% endfor %}
-                        </div>
-                        
-                        <div class="project-buttons">
-                            <a href="{{ project.url | relative_url }}" class="project-button details-button">
-                                <i class="fas fa-info-circle"></i> Read More
-                            </a>
-                            
-                            {% if project.github_link %}
-                            <a href="{{ project.github_link }}" class="project-button github-button" target="_blank" rel="noopener noreferrer">
-                                <i class="fab fa-github"></i> Code
-                            </a>
-                            {% endif %}
-                            
-                            {% if project.paper_link %}
-                            <a href="{{ project.paper_link }}" class="project-button paper-button" target="_blank" rel="noopener noreferrer">
-                                <i class="fas fa-file-alt"></i> Paper
-                            </a>
-                            {% endif %}
-                            
-                            {% if project.paper_links %}
-                            {% for paper in project.paper_links %}
-                            <a href="{{ paper.url }}" class="project-button paper-button" target="_blank" rel="noopener noreferrer">
-                                <i class="fas fa-file-alt"></i> {{ paper.name | capitalize }}
-                            </a>
-                            {% endfor %}
-                            {% endif %}
-                        </div>
-                    </div>
-                </div>
-            {% endfor %}
+
+    {% if site.data.news.size > 0 %}
+    <section id="news" class="balanced-section">
+        <h2>News</h2>
+        <div class="section-content">
+            {% include dated-list.html items=site.data.news %}
         </div>
-        
-        {% assign all_projects = site.projects | size %}
-        {% if all_projects > 3 %}
-        <div class="view-all">
-            <a href="/projects.html" class="view-all-button">View All Projects</a>
-        </div>
-        {% endif %}
     </section>
     {% endif %}
-    
-    {% assign post_count = site.posts | size %}
-    {% if post_count > 0 %}
-    <section class="blog">
+
+    <section id="research" class="balanced-section">
+        <h2>Research</h2>
+        <div class="section-content">
+            {{ profile.research_intro | markdownify }}
+            {% comment %}Papers with a `tldr` are the ones closest to my own line of work{% endcomment %}
+            {% assign selected = site.data.publications | where_exp: "pub", "pub.tldr" %}
+            {% assign others = site.data.publications | where_exp: "pub", "pub.tldr == nil" %}
+            <h3>Selected publications</h3>
+            {% include publication-list.html items=selected %}
+            <h3>Other publications</h3>
+            {% include publication-list.html items=others %}
+            {{ profile.contributions | markdownify }}
+            <p>See the complete list on <a href="{{ profile.social.scholar.url }}" target="_blank" rel="noopener noreferrer">Google Scholar</a>.</p>
+        </div>
+    </section>
+
+    <section id="awards" class="balanced-section">
+        <h2>Awards &amp; Talks</h2>
+        <div class="section-content">
+            {% include dated-list.html items=profile.awards %}
+        </div>
+    </section>
+
+    <section id="experience" class="balanced-section">
+        <h2>Experience &amp; Education</h2>
+        <div class="section-content">
+            {% include dated-list.html items=profile.experience %}
+            {{ profile.reviewing | markdownify }}
+        </div>
+    </section>
+
+    {% if site.posts.size > 0 %}
+    <section id="blog" class="balanced-section">
         <h2>Latest Blog Posts</h2>
-        <div class="blog-posts">
-            {% for post in site.posts limit:2 %}
-            <div class="blog-post">
-                <h3><a href="{{ post.url }}" class="site-link">{{ post.title }}</a></h3>
-                <p>{{ post.excerpt | strip_html | truncatewords: 20 }}</p>
-            </div>
-            {% endfor %}
+        <div class="section-content">
+            <ul>
+                {% for post in site.posts limit:3 %}
+                <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a> ({{ post.date | date: "%b %Y" }})</li>
+                {% endfor %}
+            </ul>
+            <p><a href="{{ '/blog.html' | relative_url }}">All posts</a></p>
         </div>
-        
-        {% if post_count > 2 %}
-        <div class="view-all">
-            <a href="/blog.html" class="view-all-button">View All Posts</a>
-        </div>
-        {% endif %}
     </section>
     {% endif %}
-    
-    <!-- Background Image Section -->
-    <section class="background-image-section">
-        <figure class="about-featured-image">
-            <img src="{{ site.data.profile.background_photo }}" alt="{{ site.data.profile.background_photo_caption }}">
-            <figcaption>{{ site.data.profile.background_photo_caption }}</figcaption>
-        </figure>
-    </section>
 </main>

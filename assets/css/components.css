@@ -576,7 +576,8 @@
 }
 
 /* Media Queries for components */
-@media (max-width: 768px) {
+/* The menu collapses earlier than the rest of the layout: it no longer fits on one line below ~900px */
+@media (max-width: 900px) {
     /* Mobile menu */
     .mobile-menu-toggle {
         display: block;
@@ -615,7 +616,8 @@
         text-align: center;
         max-height: 0;
         overflow: hidden;
-        transition: max-height 0.5s ease-out;
+        visibility: hidden; /* keeps the collapsed links out of the keyboard tab order */
+        transition: max-height 0.5s ease-out, visibility 0s 0.5s;
         background-color: var(--menu-bg-color);
         box-shadow: 0 2px 5px var(--shadow-color);
         z-index: 999;
@@ -623,6 +625,7 @@
     
     .menu-items.expanded {
         max-height: 500px;
+        visibility: visible;
         transition: max-height 0.5s ease-in;
     }
     
@@ -686,6 +689,9 @@
         display: inline-flex;
     }
     
+}
+
+@media (max-width: 768px) {
     /* Section styling adjustments */
     .section-highlight {
         padding: 25px 20px;

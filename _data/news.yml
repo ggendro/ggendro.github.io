@@ -1,0 +1,27 @@
+# News items (source: assets/CV-Gendron-Gael.pdf), newest first.
+#   date   free-text display date ("Jan 2026", or just "2026" when the month is unknown)
+#   text   one line, Markdown allowed
+
+# - date: "2026"
+#   text: Selected as a NeurIPS 2026 top reviewer.
+
+- date: "Jun 2026"
+  text: "Co-authored a new paper on the Scientist AI: [Safety from Honesty in a Disinterested AI Predictor](https://arxiv.org/abs/2606.29657)."
+
+- date: "Jun 2026"
+  text: Started mentoring or the [Pivotal Research AI Safety Fellowship](https://www.pivotal-research.org/fellowships/ai-safety-fellowship).
+
+- date: "May 2026"
+  text: "[Causal Cartographer](https://arxiv.org/abs/2505.14396) accepted at the 2nd Workshop on Compositional Learning @ ICML 2026."
+
+- date: "Jan 2026"
+  text: "[Humanity's Last Exam](https://www.nature.com/articles/s41586-025-09962-4), a benchmark of expert-level questions to which I contributed causal inference questions, has been published in Nature."
+
+- date: "Jan 2026"
+  text: I moved with [LawZero](https://lawzero.org/en/research) as a senior machine learning research scientist as it became an organization independent from Mila. 
+
+# - date: "2025"
+#   text: "[Trust Region Reward Optimization and Proximal Inverse Reward Optimization Algorithm](https://proceedings.neurips.cc/paper_files/paper/2025/hash/364d565b4b726c607aa40e1632045873-Abstract-Conference.html) published at NeurIPS 2025, where I was also selected as a top reviewer."
+
+- date: "Sep 2025"
+  text: Completed my Ph.D. at the University of Auckland and joined Mila - Quebec AI Institute to work on the Scientist AI as a senior machine learning research scientist.

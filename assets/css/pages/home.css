@@ -401,3 +401,93 @@ p.subtitle {
         height: 350px;
     }
 }
+
+/* Single-page sections (Phase 4); palette and typography are revisited in Phase 5
+   ========================================================================== */
+
+/* Keep section headings visible below the fixed menu after an in-page jump */
+section[id] {
+    scroll-margin-top: 80px;
+}
+
+/* Glide to sections from the menu, unless the visitor asked for reduced motion */
+@media (prefers-reduced-motion: no-preference) {
+    html {
+        scroll-behavior: smooth;
+    }
+}
+
+/* Spacing between consecutive blocks (the base reset removes all margins) */
+.intro p + p, /* beats `.intro p { margin: 0 }` */
+.section-content > * + * {
+    margin-top: 1em;
+}
+
+.intro-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 20px;
+}
+
+.section-content ul {
+    padding-left: 1.2em;
+}
+
+/* Dated lists (news, awards, experience) and publications: no bullets, left-aligned */
+.section-content .dated-list,
+.section-content .publications {
+    list-style: none;
+    padding-left: 0;
+    text-align: left;
+}
+
+.dated-list li {
+    display: flex;
+    gap: 20px;
+}
+
+.dated-list li + li {
+    margin-top: 8px;
+}
+
+.dated-list-date {
+    flex: 0 0 8.5em;
+    font-weight: 600;
+}
+
+
+.publication + .publication {
+    margin-top: 18px;
+}
+
+.publication-title {
+    font-weight: 600;
+}
+
+.publication-tldr,
+.publication-note {
+    font-style: italic;
+}
+
+.publication-links a + a {
+    margin-left: 15px;
+}
+
+@media (max-width: 768px) {
+    section[id] {
+        scroll-margin-top: 65px; /* mobile menu bar is 50px high */
+    }
+
+    .dated-list li {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .dated-list-date {
+        flex-basis: auto;
+    }
+
+    .intro-links {
+        justify-content: center;
+    }
+}

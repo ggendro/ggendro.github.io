@@ -1,0 +1,127 @@
+# Selected publications (source: assets/CV-Gendron-Gael.pdf), newest first.
+#   title, url    paper title and link
+#   authors       full author list, in order (from the publisher page, else arXiv)
+#   venue         short label shown in bold, e.g. "EMNLP 2024", "NeurIPS 2024 Workshop"
+#   venue_full    full venue name (omitted for preprints)
+#   year          publication year
+#   code          optional link to the code repository
+#   note          optional extra line (award, also presented at...)
+#   tldr          optional one-line takeaway; set only on the papers closest to my own line of work,
+#                 which are then listed under "Selected publications"
+
+- title: "Safety from Honesty in a Disinterested AI Predictor"
+  url: https://arxiv.org/abs/2606.29657
+  tldr: "A formal safety argument for the Scientist AI: a predictor trained to approximate a Bayesian posterior, never rewarded for the consequences of its predictions, is unlikely, under stated assumptions, to cause harm through coordinated deception."
+  authors: [Yoshua Bengio, Oliver Richardson, Tomáš Gavenčiak, Michael Cohen, Rory Svarc, Damiano Fornasiere, Gaël Gendron, David Hyland, Aton Kamanda, Adam Oberman, Francis Rhys Ward, Anna Gavenčiak, Jacob Livingston Slosser, Vincent Mai, Iulian Serban, Joumana Ghosn]
+  venue: Preprint 2026
+  year: 2026
+
+- title: "The Scientist AI: Safe by Design, by Not Desiring"
+  url: https://lawzero.org/en/publication/scientist-ai-safe-design-not-desiring
+  tldr: "A design for AI that is highly capable yet holds no goals of its own by construction: limit affordances and goal-directedness, attribute claims to their sources, and withhold feedback on downstream outcomes."
+  authors: [Damiano Fornasiere, Oliver Richardson, Gaël Gendron, Iulian Serban, Yoshua Bengio]
+  venue: Preprint 2026
+  year: 2026
+
+- title: "Causal Cartographer: From Mapping to Reasoning Over Counterfactual Worlds"
+  url: https://arxiv.org/abs/2505.14396
+  tldr: "LLM agents that extract causal knowledge from text into a causal graph (CausalWorld), then reason step by step over counterfactual worlds, with competitive accuracy and up to 70% lower inference cost than chain-of-thought."
+  authors: [Gaël Gendron, Jože M. Rožanec, Michael Witbrock, Gillian Dobbie]
+  venue: ICML 2026 Workshop
+  venue_full: 2nd Workshop on Compositional Learning @ ICML 2026
+  year: 2026
+  code: https://github.com/ggendro/causal-cartographer
+
+- title: "Recurrence over Video Frames (RoVF) for Animal Re-identification"
+  url: https://link.springer.com/article/10.1007/s11263-025-02709-8
+  authors: [Mitchell Rogers, Kobe Knowles, Gaël Gendron, Shahrokh Heidari, Isla Duporge, David Arturo Soriano Valdez, Mihailo Azhar, Padriac O'Leary, Simon Eyre, Michael Witbrock, Patrice Delmas]
+  venue: IJCV 2026
+  venue_full: International Journal of Computer Vision
+  year: 2026
+
+- title: "Trust Region Reward Optimization and Proximal Inverse Reward Optimization Algorithm"
+  url: https://proceedings.neurips.cc/paper_files/paper/2025/hash/364d565b4b726c607aa40e1632045873-Abstract-Conference.html
+  authors: [Yang Chen, Menglin Zou, Jiaqi Zhang, Yitan Zhang, Junyi Yang, Gaël Gendron, Libo Zhang, Jiamou Liu, Michael Witbrock]
+  venue: NeurIPS 2025
+  venue_full: Advances in Neural Information Processing Systems
+  year: 2025
+
+- title: "Exploring iterative enhancement for improving learnersourced multiple-choice question explanations with large language models"
+  url: https://ojs.aaai.org/index.php/AAAI/article/view/35164
+  authors: [Qiming Bao, Juho Leinonen, Alex Yuxuan Peng, Wanjun Zhong, Gaël Gendron, Timothy Pistotti, Alice Huang, Paul Denny, Michael Witbrock, Jiamou Liu]
+  venue: AAAI 2025
+  venue_full: Proceedings of the 39th AAAI Conference on Artificial Intelligence
+  year: 2025
+
+- title: "Counterfactual Causal Inference in Natural Language with Large Language Models"
+  url: https://arxiv.org/abs/2410.06392
+  authors: [Gaël Gendron, Jože M. Rožanec, Michael Witbrock, Gillian Dobbie]
+  venue: NeurIPS 2024 Workshop
+  venue_full: Causality and Large Models Workshop @ NeurIPS 2024
+  year: 2024
+  code: https://github.com/Strong-AI-Lab/counterfactual-llm-inference
+
+- title: "Robust Domain Generalisation with Causal Invariant Bayesian Neural Networks"
+  url: https://arxiv.org/abs/2410.06349
+  authors: [Gaël Gendron, Michael Witbrock, Gillian Dobbie]
+  venue: NeurIPS 2024 Workshop
+  venue_full: Representation Learning Workshop @ NeurIPS 2024
+  year: 2024
+
+- title: "Can Large Language Models Learn Independent Causal Mechanisms?"
+  url: https://aclanthology.org/2024.emnlp-main.381/
+  tldr: "Independent Causal Language Models (ICLM): a modular architecture of independent causal modules selected by a router, improving out-of-distribution reasoning with accuracy gains of up to 40 percentage points over LoRA fine-tuning on the evaluated tasks."
+  authors: [Gaël Gendron, Bao Trung Nguyen, Alex Yuxuan Peng, Michael Witbrock, Gillian Dobbie]
+  venue: EMNLP 2024
+  venue_full: Proceedings of the 2024 Conference on Empirical Methods in Natural Language Processing
+  year: 2024
+  code: https://github.com/Strong-AI-Lab/modular-lm
+
+- title: "Large Language Models Are Not Strong Abstract Reasoners"
+  url: https://dl.acm.org/doi/abs/10.24963/ijcai.2024/693
+  tldr: "A benchmark of text-based abstract reasoning tasks showing that LLMs, whether prompted or fine-tuned, struggle to generalize to unseen compositions of abstract rules."
+  authors: [Gaël Gendron, Qiming Bao, Michael Witbrock, Gillian Dobbie]
+  venue: IJCAI 2024
+  venue_full: Proceedings of the Thirty-Third International Joint Conference on Artificial Intelligence
+  year: 2024
+  code: https://github.com/Strong-AI-Lab/Logical-and-abstract-reasoning
+  note: Also presented at the How Far Are We From AGI Workshop @ ICLR 2024
+
+- title: "Causal Graph Modeling with Deep Neural Engines for Strong Abstract Reasoning in Language and Vision"
+  url: https://dl.acm.org/doi/abs/10.24963/ijcai.2024/960
+  authors: [Gaël Gendron]
+  venue: IJCAI 2024 Doctoral Consortium
+  venue_full: Proceedings of the Thirty-Third International Joint Conference on Artificial Intelligence
+  year: 2024
+
+- title: "Abstract Meaning Representation-Based Logic-Driven Data Augmentation for Logical Reasoning"
+  url: https://aclanthology.org/2024.findings-acl.353/
+  authors: [Qiming Bao, Alex Yuxuan Peng, Zhenyun Deng, Wanjun Zhong, Gaël Gendron, Timothy Pistotti, Neşet Tan, Nathan Young, Yang Chen, Yonghua Zhu, Paul Denny, Michael Witbrock, Jiamou Liu]
+  venue: Findings of ACL 2024
+  venue_full: Findings of the Association for Computational Linguistics
+  year: 2024
+
+- title: "Behaviour Modelling of Social Animals via Causal Structure Discovery and Graph Neural Networks"
+  url: https://dl.acm.org/doi/abs/10.5555/3635637.3663132
+  authors: [Gaël Gendron, Yang Chen, Mitchell Rogers, Yiping Liu, Mihailo Azhar, Shahrokh Heidari, David Arturo Soriano Valdez, Kobe Knowles, Padriac O'Leary, Simon Eyre, Michael Witbrock, Gillian Dobbie, Jiamou Liu, Patrice Delmas]
+  venue: AAMAS 2024 Extended Abstract
+  venue_full: Proceedings of the 23rd International Conference on Autonomous Agents and Multiagent Systems
+  year: 2024
+  code: https://github.com/Strong-AI-Lab/behavior-causal-discovery
+
+- title: "Meerkat Behaviour Recognition Dataset"
+  url: https://arxiv.org/abs/2306.11326
+  authors: [Mitchell Rogers, Gaël Gendron, David Arturo Soriano Valdez, Mihailo Azhar, Yang Chen, Shahrokh Heidari, Caleb Perelini, Padriac O'Leary, Kobe Knowles, Izak Tait, Simon Eyre, Michael Witbrock, Patrice Delmas]
+  venue: CVPR 2023 Workshop
+  venue_full: Computer Vision for Animal Behavior Tracking and Modeling Workshop @ CVPR 2023
+  year: 2023
+
+- title: "Disentanglement of Latent Representations via Causal Interventions"
+  url: https://dl.acm.org/doi/abs/10.24963/ijcai.2023/361
+  tldr: "CT-VAE: a variational auto-encoder that disentangles latent factors through hard causal interventions on a quantized latent space."
+  authors: [Gaël Gendron, Michael Witbrock, Gillian Dobbie]
+  venue: IJCAI 2023
+  venue_full: Proceedings of the Thirty-Second International Joint Conference on Artificial Intelligence
+  year: 2023
+  code: https://github.com/Strong-AI-Lab/ct-vae
+  note: University of Auckland Best Student Published Paper in Computer Science (2023)
